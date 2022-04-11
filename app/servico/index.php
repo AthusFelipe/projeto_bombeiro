@@ -7,6 +7,7 @@ include "header.html" ;
 
 if(isset($_GET['idservico'])){
   $conn->prepare('INSERT INTO servicosvoluntario (idservicos, idmilitar) VALUES (?,?)')->execute([$_GET['idservico'], $_SESSION['codfunc']]);
+  header ('Location: ./') ; 
  
 }
 
