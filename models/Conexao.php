@@ -7,15 +7,15 @@ class Conexao extends PDO
 
     public static function conectar()
     {
-        // $pdo = new PDO("mysql:host=localhost;dbname=intranet", "root", "");
-        $pdo = new PDO("mysql:host=localhost;dbname=intranet", "devbombeiro", "193");
+         $pdo = new PDO("mysql:host=localhost;dbname=intranet", "root", "");
+      //  $pdo = new PDO("mysql:host=localhost;dbname=intranet", "devbombeiro", "193");
         return $pdo;
     }
 
     public function __construct($pdo)
     {
-        // $this->pdo = new PDO("mysql:host=localhost;dbname=intranet", "root", "");
-        $this->pdo = new PDO("mysql:host=localhost;dbname=intranet", "devbombeiro", "193");
+         $this->pdo = new PDO("mysql:host=localhost;dbname=intranet", "root", "");
+       // $this->pdo = new PDO("mysql:host=localhost;dbname=intranet", "devbombeiro", "193");
         return $pdo;
     }
 

@@ -40,12 +40,7 @@ foreach ($lss as $serv) {
 
 
 <body>
-  <nav class="navbar text-white navbar-light ">
-    <a class="navbar-brand text-white" href="#">
-      <img src="./../../logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      INTRANET 2ª CIA
-    </a>
-  </nav>
+
 
 
 
@@ -55,7 +50,7 @@ foreach ($lss as $serv) {
 
 
 
-      <a href='./voluntariocopy.php'>
+      <a href='./voluntario.php'>
         <div class="card text-white  mb-3" style="max-width: 16rem;">
           <div class="card-body">
             <h5 class="card-title">VOLUNTARIO</h5>
