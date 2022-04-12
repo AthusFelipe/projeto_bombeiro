@@ -66,7 +66,7 @@ hr {
             <div class="col">
 
                 <table class="table table-stripped">
-                    <p>Escalas Cadastradas</p>
+                    
                     <thead>
                         <tr>
                             <th scope="col">DIA</th>
