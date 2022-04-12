@@ -1,13 +1,30 @@
 <?php
 
 include "./../../protegesessao.php";
-include "Voluntario.controller.php";
 
-
-
+include "controller.php";
 include "header.html";
 
+if (isset($_GET['idservico'])) {
+  $conn->prepare('INSERT INTO servicosvoluntario (idservicos, idmilitar) VALUES (?,?)')->execute([$_GET['idservico'], $_SESSION['codfunc']]);
+  header('Location: ./');
+}
 
+
+
+$lss = $conn->query('SELECT * FROM servicos WHERE dataservicos >= curdate() ORDER BY dataservicos DESC, horaservicos ASC ')
+  ->fetchAll(PDO::FETCH_OBJ);
+
+$voluntario = '';
+foreach ($lss as $serv) {
+  $voluntario .= "    <tr>
+                 
+            <td>" . date("D d/m", strtotime($serv->dataservicos)) . "</td>
+            <td>$serv->horaservicos</td>
+            <td>$serv->descricaoservicos</td>
+            <td><a href='?idservico=$serv->idservicos'>Voluntariar</a></td>
+            </tr>";
+}
 
 
 
@@ -23,7 +40,7 @@ include "header.html";
     <div class="row">
       <div class="col">
 
-        <table id='pager' class="table">
+        <table class="table">
           <p>Serviços disponíveis</p>
           <thead>
             <tr>
@@ -55,14 +72,10 @@ include "header.html";
             </tbody>
 
         </table>
-
       </div>
 
     </div>
   </div>
-
-
-
 </body>
 
 

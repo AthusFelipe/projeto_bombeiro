@@ -1,32 +1,28 @@
+<?php
+include_once "./../models/Conexao.php";
 
-      <?php
-      include_once "./../models/Conexao.php";
-/*
-// session_start inicia a sessão
+
+//session_start inicia a sessão
 session_start();
 // as variáveis login e senha recebem os dados digitados na página anterior
 $login = $_POST['nomeusuario'];
 $senha = $_POST['senhausuario'];
-// as próximas 3 linhas são responsáveis em se conectar com o bando de dados.
-$pdo = Conexao::conectar() ; 
+//as próximas 3 linhas são responsáveis em se conectar com o bando de dados.
+$pdo = Conexao::conectar();
 
-$user = $pdo->prepare('SELECT * FROM usuarios WHERE nomeusuario = ? AND senhausuario = ?') ; 
-       $user->execute([$login, $senha]);
-      $usuario = $user->fetch(PDO::FETCH_OBJ) ; 
-
-
-if(!$usuario)  { echo "Você não está conectado" ; 
-    die(); } 
-else {
-    $_SESSION['codfunc'] = $usuario->codfunc;
-     
-   
+$user = $pdo->prepare('SELECT * FROM usuarios WHERE nomeusuario = ? AND senhausuario = ?');
+$user->execute([$login, $senha]);
+$usuario = $user->fetch(PDO::FETCH_OBJ);
 
 
-
+if (!$usuario) {
+  echo "Você não está conectado";
+  die();
+} else {
+  $_SESSION['codfunc'] = $usuario->codfunc;
 }
-*/
- 
+
+
 ?>
 
 
@@ -34,61 +30,98 @@ else {
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="./../bootstrap.css" rel="stylesheet">
-    <title>INTRANET COLINAS</title>
-    <style>
+  <!-- Bootstrap CSS -->
+  <link href="./../bootstrap.css" rel="stylesheet">
+  <title>INTRANET COLINAS</title>
+  <style>
+    .body {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding-top: 10%;
+      padding-bottom: 10%;
+      background-color: #f0f9ce;
+    }
 
-body {
-    height: 100%;
-    width: 100%;
-  display: flex;
-  align-items: center;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  background-color: #f0f9ce;
-}
+    body {
+      background-color: #f0f9ce;
+    }
 
-.container {
-  
-  display: grid;
-  justify-content: center;
-}
-</style>
+
+    .container {
+
+      display: grid;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: red;
+    }
+
+    a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+
+    .navbar {
+      background-color: #bf0000;
+    }
+
+    .card {
+      background-color: #bf0000;
+    }
+  </style>
+
 </head>
 
 
+
 <body>
+  <nav class="navbar text-white navbar-light ">
+    <a class="navbar-brand text-white" href="#">
+      <img src="./../logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      INTRANET 2ª CIA
+    </a>
+  </nav>
 
 
 
-<div id='meio' class='container text-center center '>
-    
+  <div class='body'>
 
-            
-      <a href='./estoque/'>  <div class="card text-white bg-primary mb-3" style="max-width: 16rem;">
-  <div class="card-body">
-    <h5 class="card-title">ESTOQUE</h5>
-</div></div></a>
+    <div id='meio' class='container text-center center '>
 
-<a href='./servico/'>  <div class="card text-white bg-primary mb-3" style="max-width: 16rem;">
-  <div class="card-body">
-    <h5 class="card-title">SERVIÇO EXTRA</h5>
-</div></div></a>
-</div>
-        
-   
-   
-    </div>
+
+
+      <a href='./estoque/'>
+        <div class="card text-white  mb-3" style="max-width: 16rem;">
+          <div class="card-body">
+            <h5 class="card-title">ESTOQUE</h5>
+          </div>
         </div>
+      </a>
 
-</div>
+      <a href='./servico/'>
+        <div class="card text-white  mb-3" style="max-width: 16rem;">
+          <div class="card-body">
+            <h5 class="card-title">SERVIÇO EXTRA</h5>
+          </div>
+        </div>
+      </a>
+    </div>
 
 
+
+  </div>
+  </div>
+
+  </div>
+
+  </div>
 
 
 

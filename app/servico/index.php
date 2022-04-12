@@ -1,90 +1,96 @@
 <?php
 
-include "./../../protegesessao.php"; 
+include "./../../protegesessao.php";
 
-include "controller.php" ; 
-include "header.html" ; 
+include "controller.php";
+include "header.html";
 
-if(isset($_GET['idservico'])){
+if (isset($_GET['idservico'])) {
   $conn->prepare('INSERT INTO servicosvoluntario (idservicos, idmilitar) VALUES (?,?)')->execute([$_GET['idservico'], $_SESSION['codfunc']]);
-  header ('Location: ./') ; 
- 
+  header('Location: ./');
 }
 
 
 
 $lss = $conn->query('SELECT * FROM servicos WHERE dataservicos >= curdate() ORDER BY dataservicos DESC, horaservicos ASC ')
-                      ->fetchAll(PDO::FETCH_OBJ) ;
+  ->fetchAll(PDO::FETCH_OBJ);
 
-        $voluntario = '' ; 
-        foreach($lss as $serv){
-            $voluntario .= "    <tr>
+$voluntario = '';
+foreach ($lss as $serv) {
+  $voluntario .= "    <tr>
                  
-            <td>".date("D d/m", strtotime($serv->dataservicos))."</td>
+            <td>" . date("D d/m", strtotime($serv->dataservicos)) . "</td>
             <td>$serv->horaservicos</td>
             <td>$serv->descricaoservicos</td>
             <td><a href='?idservico=$serv->idservicos'>Voluntariar</a></td>
-            </tr>" ;
-            
-        }
+            </tr>";
+}
 
-                      
+
 
 
 
 ?>
 
 
-<!DOCTYPE html>
+
+
+
+
+
+
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      
-<table class="table">
-  <p>Serviços disponíveis</p>
-  <thead>
-    <tr>
-      <th scope="col">DIA</th>
-      <th scope="col">HORA</th>
-      <th scope="col">DESCRICAO</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?= $voluntario ?>
+  <nav class="navbar text-white navbar-light ">
+    <a class="navbar-brand text-white" href="#">
+      <img src="./../../logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      INTRANET 2ª CIA
+    </a>
+  </nav>
 
-  </tbody>
 
-</table>
+
+  <div class='body'>
+
+    <div id='meio' class='container text-center center '>
+
+
+
+      <a href='./voluntariocopy.php'>
+        <div class="card text-white  mb-3" style="max-width: 16rem;">
+          <div class="card-body">
+            <h5 class="card-title">VOLUNTARIO</h5>
+          </div>
+        </div>
+      </a>
+
+      <a href='./gerenciarescala.php'>
+        <div class="card text-white  mb-3" style="max-width: 16rem;">
+          <div class="card-body">
+            <h5 class="card-title">GERENCIAR ESCALAS</h5>
+          </div>
+        </div>
+      </a>
+
+      <a href='./cadastrarservico.php'>
+        <div class="card text-white  mb-3" style="max-width: 16rem;">
+          <div class="card-body">
+            <h5 class="card-title">CADASTRAR SERVIÇO</h5>
+          </div>
+        </div>
+      </a>
+
+
     </div>
-    <div class="col">
-    <table class="table">
-      <p>Serviços voluntariados
-  <thead>
-    <tr>
-      <th scope="col">DIA</th>
-      <th scope="col">HORA</th>
-      <th scope="col">DESCRICAO</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?= $voluntario1 ?>
 
-  </tbody>
 
-</table>
-    </div>
-   
+
   </div>
-</div>
+  </div>
+
+  </div>
+
+  </div>
+
+
+
 </body>
-
-
-
-
-
-
-
-
-
-</html>
