@@ -81,47 +81,40 @@ if (!$usuario) {
 
 
 
-<body>
-  <nav class="navbar text-white navbar-light ">
-    <a class="navbar-brand text-white" href="#">
-      <img src="./../logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      INTRANET 2ª CIA
+
+
+
+<div class='body'>
+
+  <div id='meio' class='container text-center center '>
+
+
+
+    <a href='./estoque/'>
+      <div class="card text-white  mb-3" style="max-width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">ESTOQUE</h5>
+        </div>
+      </div>
     </a>
-  </nav>
 
-
-
-  <div class='body'>
-
-    <div id='meio' class='container text-center center '>
-
-
-
-      <a href='./estoque/'>
-        <div class="card text-white  mb-3" style="max-width: 16rem;">
-          <div class="card-body">
-            <h5 class="card-title">ESTOQUE</h5>
-          </div>
+    <a href='./servico/'>
+      <div class="card text-white  mb-3" style="max-width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">SERVIÇO EXTRA</h5>
         </div>
-      </a>
-
-      <a href='./servico/'>
-        <div class="card text-white  mb-3" style="max-width: 16rem;">
-          <div class="card-body">
-            <h5 class="card-title">SERVIÇO EXTRA</h5>
-          </div>
-        </div>
-      </a>
-    </div>
-
-
-
-  </div>
+      </div>
+    </a>
   </div>
 
-  </div>
 
-  </div>
+
+</div>
+</div>
+
+</div>
+
+</div>
 
 
 

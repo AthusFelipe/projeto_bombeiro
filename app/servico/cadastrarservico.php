@@ -1,11 +1,11 @@
 <?php
 
-include "./../../protegesessao.php"; 
+include "./../../protegesessao.php";
 
+include "./Controllers/CadastrarServico.controller.php";
 
 include "header.html";
-include "controller.php";  
-setlocale(LC_TIME, 'portuguese'); 
+setlocale(LC_TIME, 'portuguese');
 
 
 
@@ -17,54 +17,67 @@ setlocale(LC_TIME, 'portuguese');
 
 
 <!DOCTYPE html>
+<style>
+  .table-red {
+    background-color: #bf0000;
+
+  }
+</style>
+
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col-sm"> <br>
-    <form method='POST' action='cadastrarservico.php'>
-    <div class='form-group row col-sm-10 form-control'>
-     
+  <div class="container">
 
-            <h2>Cadastrar novo serviço</h2>
+    <div class="row">
+      <div class="col-sm"> <br>
+        <a href='./index.php'><button class='btn btn-sm btn-primary'>VOLTAR</button></a><br>
+        <form method='POST' action='cadastrarservico.php'>
+
+          <br>
+          <div class='form-group row col-sm-10 form-control'>
+
+
+            <h3>Cadastrar novo serviço</h3>
             <label for='descricao'>Descrição do servico</label>
-        <input type='text' name='descricao'><br><br>
-        <label for='dataservico'>Data do serviço</label>
-        <input type='date' name='dataservico'><br><br>
-        <label for='horaservico'>Horário do serviço</label>
-        <input type='time' name='horaservico'><br><br>
+            <input type='text' name='descricao'><br>
+            <label for='dataservico'>Data do serviço</label>
+            <input type='date' name='dataservico'><br>
+            <label for='horaservico'>Horário do serviço</label>
+            <input type='time' name='horaservico'><br><br>
+            <input class="btn btn-success" type='submit' value='Criar'>
 
-        <input type='submit' value='Criar'>
-        
-    </form>
-    </div>
+        </form>
+      </div>
     </div>
     <div class="col-sm">
-    <table class="table"><br>
-  <thead>
-      <h2>Serviços cadastrados</h2>
-    <tr>
-      <th scope="col">HORA</th>
-      <th scope="col">DIA</th>
-      <th scope="col">SERVIÇO</th>
-    </tr>
-  </thead>
-  <tbody>
-   <?= $servico ?>
-   
-  </tbody>
-  
- 
-    </table>
-    Página: 
-    <?php  for($i = 1; $i < $numPaginas + 1; $i++) { 
-                    echo "<a href='?pagina=$i'>".$i."</a> "; 
-                }?>
+      <table class="table">
+        <thead class='table-red text-white'>
+          <h2>
+            <center>Serviços cadastrados</center>
+          </h2>
+          <tr>
+            <th scope="col">HORA</th>
+            <th scope="col">DIA</th>
+            <th scope="col">SERVIÇO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?= $servico ?>
+
+        </tbody>
+
+
+      </table>
+      Página:
+      <?php for ($i = 1; $i < $numPaginas + 1; $i++) {
+        echo "<a href='?pagina=$i'>" . $i . "</a> ";
+      } ?>
     </div>
-  
-   
+
+
   </div>
- 
-</div>
+
+  </div>
 
 
 

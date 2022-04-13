@@ -102,54 +102,63 @@ include "header.html";
     line-height: 15px;
   }
 
-  .esquerda{
+  .esquerda {
     margin-right: 500px;
   }
-  .direita{
+
+  .direita {
     margin-left: 500px;
   }
 </style>
 
-<body>
+<body><br>
+
+
   <div class="container text-center">
-  <br>
-  <div class=''>
-    <a href='./index.php'><button class='btn btn-danger'>VOLTAR </button></a></div>
-    <form method='post'><div class=''>
-    <input class='btn btn-success' type='submit' value='SALVAR'>
-  
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <a href='./index.php'><button class='btn btn-danger'>VOLTAR </button></a>
+      <form method='post'>
+        <div class='container-lg'>
 
-   
-</div>
-<h1>Serviços disponíveis</h1>
-      <div class='table-responsive'>
-        <table class="table   table-hover ">
-
-          <thead class='thead'>
-            <tr>
-              <th scope="col">HORA</th>
-              <th scope="col">DIA</th>
-              <th scope="col">DESCRICAO</th>
-              <th scope="col">STATUS</th>
-            </tr>
-          </thead>
-          <tbody>
+          <input class='btn btn-success ' type='submit' value='SALVAR'>
+        </div>
+        <br>
 
 
-            <?= $voluntario ?>
-            <div class='alinhardireita container'>
-           
-            
-   
-    </tbody>
 
-    </table>
-    
-   
-    <div class='mxauto' style='height: 65px;'>
-    <div class=''><input class='btn btn-success' type='submit' value='SALVAR'>
-</div></div></div>
-            </form>
+
+    </div>
+    <h1>Serviços disponíveis</h1>
+    <div class='table-responsive'>
+      <table class="table   table-hover ">
+
+        <thead class='thead'>
+          <tr>
+            <th scope="col">HORA</th>
+            <th scope="col">DIA</th>
+            <th scope="col">DESCRICAO</th>
+            <th scope="col">STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <?= $voluntario ?>
+          <div class='alinhardireita container'>
+
+
+
+        </tbody>
+
+      </table>
+
+
+      <div class='mxauto' style='height: 65px;'>
+        <div class=''><input class='btn btn-success' type='submit' value='SALVAR'>
+        </div>
+      </div>
+    </div>
+    </form>
   </div>
 
 

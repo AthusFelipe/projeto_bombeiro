@@ -8,96 +8,94 @@ include "../../models/Escalas.php";
 
 
 
-$conn = Conexao::conectar();
+include "./Controllers/ModerarEscala.controller.php";
 
-$buscardatadoservico = $conn->prepare('SELECT descricaoservicos, dataservicos, horaservicos FROM servicos WHERE idservicos = ?');
-$buscardatadoservico->execute([$_GET['idservico']]);
-$dadosServico = $buscardatadoservico->fetch(PDO::FETCH_OBJ);
-
-echo "DADOS DO SERVIÇO<br>
-DATA DO SERVICO: $dadosServico->dataservicos <br>
-DESCRICAO DO SERVICO: $dadosServico->descricaoservicos <br>
-HORA INICIAL DO SERVICO: $dadosServico->horaservicos <hr>";
-
-//CADASTRAR MILITAR NO SERVICO 
-if (isset($_POST['idmilitar'])) {
-    $servescala = new Escala($_GET['idservico'], $_POST['idmilitar']);
-    $conn->prepare('INSERT INTO servicosescala ( idservicos, idmilitar1) VALUES (?, ?) ')
-        ->execute([$servescala->getIdservicos(), $servescala->getIdmilitar()]);
-}
+include "./header.html";
+?>
 
 
 
-//LISTA VOLUNTARIOS
-$l1 = $conn->prepare("SELECT * FROM servicosvoluntario, servicos, usuarios 
-                    WHERE servicosvoluntario.idservicos = servicos.idservicos 
-                    AND servicosvoluntario.idmilitar = usuarios.codfunc 
-                    AND servicosvoluntario.idservicos = ? ");
-$l1->execute([$_GET['idservico']]);
+<!DOCTYPE html>
+<style>
+  .lista-voluntarios {
+    background-color: rgb(191, 196, 0);
+  }
 
-$listaVoluntarios = $l1->fetchAll(PDO::FETCH_OBJ);
+  .lista-escalados {
+    background-color: green;
+  }
 
+  .lista-cinza {
+    background: gray;
+  }
 
+  .btn {
+    font-size: 10px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    background-color: grey;
+    color: white;
 
-echo "
-<table>
-<tr>
-  <th>Voluntários</th>
-  
-</tr>";
+  }
 
-$voluntarios = '';
-foreach ($listaVoluntarios as $voluntario) {
-    $voluntarios .= "<tr>
-    <td>$voluntario->nomeusuario</td>
-    <td>$voluntario->idmilitar</td>
-    <td><form method='post' action=''>
-    <input type='hidden' name='idmilitar' value='$voluntario->idmilitar'>
-    <input type='submit' value='Escalar'> </form>
-    </td>
-    </tr>";
-}
-
-echo $voluntarios;
-echo "
-</table> ";
+  .btn:hover {
+    background-color: #bf0000;
 
 
-//REMOVER ESCALADO
-if (isset($_POST['removermilitar'])) {
-    $conn->prepare('DELETE FROM servicosescala WHERE iservicosescala = ?')->execute([$_POST['removermilitar']]);
-}
+  }
+
+  .btn-voltar {
+
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+</style>
+
+<body>
+  <div class='container text-center'><br>
+    <a href='./gerenciarescala.php'><button class=' btn-danger btn-voltar'>VOLTAR</button></a><br><br><br>
+    <ul class="list-group">
+      <li class="list-group-item lista-cinza text-white" aria-current="true">
+        SERVIÇO DIURNO DE <b><?= date("d/m(D)", strtotime($dadosServico->dataservicos)) ?></b></li>
+      <li class="list-group-item " aria-current="true"> <?= $dadosServico->horaservicos . " (" . $dadosServico->descricaoservicos . ")";  ?> </li>
+      <br>
+      <hr>
+  </div>
+  <div class=' container-fluid text-center container-lg'>
+    <div class='row'>
+      <div class='col col-sm-2'></div>
+      <div class=' col col-sm-4'>
+        <table>
+          <li class="list-group-item lista-voluntarios text-center text-white " aria-current="true">
+            <b> VOLUNTÁRIOS</b>
+          </li>
 
 
 
-// LISTA ESCALADOS 
-$buscaescalados = $conn->prepare('SELECT * FROM servicosescala, usuarios WHERE servicosescala.idservicos = ? AND servicosescala.idmilitar1 = usuarios.codfunc ');
-$buscaescalados->execute([$_GET['idservico']]);
-$listaEscalados = $buscaescalados->fetchAll(PDO::FETCH_OBJ);
+          <?= $voluntarios ?>
 
 
 
-$escalados = '';
-foreach ($listaEscalados as $escalado) {
-    $escalados .= "<tr>
-    <td>$escalado->nomeusuario</td>
-    <td>$escalado->idmilitar1</td>
-    <td><form method='post' action=''>
-    <input type='hidden' name='removermilitar' value='$escalado->iservicosescala'>
-    <input type='submit' value='Remover'> </form>
-    </td>
-    </tr>";
-}
+        </table>
+      </div>
+      <div class='col col-sm-4'>
+        <table>
+
+          <li class="list-group-item lista-escalados text-center text-white" aria-current="true">
+            <b>ESCALADOS</b>
+          </li>
+          </tr>
+          </tr>
 
 
-echo "
-<table>
-<tr>
+          <?= $escalados ?>
 
-  <th>Escalados</th>
-</tr>";
+        </table>
+      </div>
+      <div class='col col-sm-2'></div>
 
 
-echo $escalados;
-echo "
-</table> ";
+    </div>
+  </div>
+  </div>
+</body>

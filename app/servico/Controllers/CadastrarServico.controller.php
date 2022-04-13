@@ -4,11 +4,10 @@
 include "controller.php";
 
 
-$conn = Conexao::conectar();
 
 
 
-//CADASTRA NOVO SERVICO CADASTRARSERVICO.PHP
+
 
 if (isset($_POST['descricao']) && isset($_POST['dataservico'])) {
 
@@ -18,11 +17,22 @@ if (isset($_POST['descricao']) && isset($_POST['dataservico'])) {
     header('Location: ./cadastrarservico.php');
 }
 
-//EXCLUIR SERVICO CADASTRADO CADASTRARSERVICO.PHP
+
+
+
+
+
+
 if (isset($_GET['excluir'])) {
     $conn->prepare('DELETE FROM servicos WHERE idservicos = ?')->execute([$_GET['excluir']]);
     header('Location: ./cadastrarservico.php');
 }
+
+
+
+
+
+
 
 //BUSCA OS SERVIÇOS CADASTRADOS 
 {
@@ -41,7 +51,7 @@ if (isset($_GET['excluir'])) {
                         <td>" . date("D d/m", strtotime($serv->dataservicos)) . "</td>
                         <td>$serv->horaservicos</td>
                         <td>$serv->descricaoservicos</td>
-                        <td><a href='?excluir=$serv->idservicos'>Excluir</a></td>
+                        <td><a href='?excluir=$serv->idservicos'><button class='btn btn-sm btn-primary'><i class='bi bi-trash'> Excluir</i></button></a></td>
                         </tr>";
     }
 }
