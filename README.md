@@ -39,4 +39,12 @@ MÓDULOS:
 			 
        e)Relatórios automáticos;
        
+  
+  DIFICULDADES ATUAIS:
+  
+  	GERENCIAMENTO DAS SESSÕES DE USUÁRIO;
+	
+	CONTROLE DE AUTORIZAÇÕES;
+	
+       
    
