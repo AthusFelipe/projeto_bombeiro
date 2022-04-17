@@ -42,7 +42,9 @@ setlocale(LC_TIME, 'portuguese');
             <label for='dataservico'>Data do serviço</label>
             <input type='date' name='dataservico'><br>
             <label for='horaservico'>Horário do serviço</label>
-            <input type='time' name='horaservico'><br><br>
+            <input type='time' name='horaservico'><br>
+            <label for='multiplicarservico'>Multiplicar serviço</label>
+            <input type='number' name='multiplicarservico' placeholder='Quantas vezes o serviço será repetido?'><br><br>
             <input class="btn btn-success" type='submit' value='Criar'>
 
         </form>

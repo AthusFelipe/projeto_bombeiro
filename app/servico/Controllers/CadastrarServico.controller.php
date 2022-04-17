@@ -10,11 +10,19 @@ include "controller.php";
 
 
 if (isset($_POST['descricao']) && isset($_POST['dataservico'])) {
+    if(empty($_POST['multiplicarservico'])){
+        $_POST['multiplicarservico'] = 0 ; 
+    }
 
-    $s1 = new Servico($_POST['descricao'], $_POST['dataservico'], $_POST['horaservico']);
+    for ($i = 0; $i <= $_POST['multiplicarservico']; $i++){
+        $addData = date('Y/m/d', strtotime($_POST['dataservico']."+{$i} days" )) ;
+
+    $s1 = new Servico($_POST['descricao'], $addData, $_POST['horaservico']);
     $conn->prepare('INSERT INTO servicos (dataservicos, descricaoservicos, horaservicos) VALUES (?,?, ?)')
-        ->execute([$_POST['dataservico'], $_POST['descricao'], $_POST['horaservico']]);
+        ->execute([$s1->getDataservico(), $s1->getDescricaoservico(), $s1->getHoraservico()]);
+    }
     header('Location: ./cadastrarservico.php');
+
 }
 
 
