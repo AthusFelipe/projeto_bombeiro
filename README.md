@@ -18,7 +18,7 @@ MÓDULOS:
 	 
       a)Cadastro de escalas disponíveis para voluntariado ; (13/04/22)
 			
-      b)Inserição de voluntários nas escalas disponíveis; (14/04/22)
+      b)Inserção de voluntários nas escalas disponíveis; (14/04/22)
 			
       c)Gerenciamento das escalas disponíveis (voluntários e escalados) ; (15/04/22);
       			
