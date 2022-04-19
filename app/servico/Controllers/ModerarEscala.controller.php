@@ -8,6 +8,9 @@ $dadosServico = $buscardatadoservico->fetch(PDO::FETCH_OBJ);
 
 
 
+
+
+
 //CADASTRAR MILITAR NO SERVICO 
 if (isset($_POST['idmilitar'])) {
     $servescala = new Escala($_GET['idservico'], $_POST['idmilitar']);
@@ -32,8 +35,16 @@ $listaVoluntarios = $l1->fetchAll(PDO::FETCH_OBJ);
 
 $voluntarios = '';
 foreach ($listaVoluntarios as $voluntario) {
+    $totalServicosMes = $conn->query("SELECT  count(servicos.idservicos) as totalservicosmes 
+                                   FROM servicosescala, servicos
+                                   WHERE servicos.idservicos = servicosescala.idservicos and servicosescala.idmilitar1 = $voluntario->idmilitar 
+                                   AND month(servicos.dataservicos) = month(curdate()) ; ")->fetch(); 
+
+
+
+
     $voluntarios .= "<tr><td>
-    $voluntario->nomeguerra</td><td></td><td>
+    <b>$voluntario->nomeguerra</b> ({$totalServicosMes['totalservicosmes']})</td><td></td><td>
     <form method='post' action=''>
     <input type='hidden' name='idmilitar' value='$voluntario->idmilitar'>
     <input type='submit' class='btn  btn-sm btnescalar' value='Escalar'> </form></td>

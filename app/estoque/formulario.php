@@ -3,12 +3,16 @@
 include "./../../protegesessao.php"; 
 
 include "controller.php" ;
-include "layout/header.html" ; 
+include "header.html" ; 
+
+
+
+
 ?>
 <!DOCTYPE html>
     <div class='form-group row'>
     <div class='container'>
-    <form method='post' action=''>
+    <form method='post' action='' enctype="multipart/form-data">
     <label for='nomeproduto'> Nome do produto</label>
     <div class="col-sm-10">
     <input type='text' name='nomeproduto'>
@@ -18,7 +22,9 @@ include "layout/header.html" ;
     <input type='number' name='quantidadeproduto'><br><br>
 </div>
 <div class="col-sm-10">
+<input type="file" name="imagem"><br>
     <input type='submit' value='Cadastrar'>  
+</form>
 </div>
 </div>
 </div>

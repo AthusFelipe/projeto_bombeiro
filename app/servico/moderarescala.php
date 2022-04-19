@@ -1,5 +1,6 @@
 <?php
 
+include "./../../protegesessao.php";
 
 include "../../models/Servicos.php";
 include "../../models/Conexao.php";
@@ -10,7 +11,7 @@ include "../../models/Escalas.php";
 
 include "./Controllers/ModerarEscala.controller.php";
 
-include "./header.html";
+include "./layout/header.html";
 ?>
 
 

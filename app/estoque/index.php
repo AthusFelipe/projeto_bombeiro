@@ -2,7 +2,7 @@
 // include "./../../protegesessao.php";
 session_start();
 include "controller.php";
-include "header.html";
+include "layout/header.html";
 
 
 
@@ -28,7 +28,8 @@ include "header.html";
     foreach ($estoque as $produto) {
       $listaProdutos .= "
      <tr>
-     <th> $produto->idprodutos </th>
+     <th>
+          <th> $produto->idprodutos </th>
      <form method='get' action=''> <th> <a href='produto.php?selecionado=" . $produto->idprodutos . "'>$produto->nomeprodutos</a> 
      <th>$produto->quantidadeprodutos </th>
      ";

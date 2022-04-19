@@ -1,14 +1,14 @@
 <?php
-
 include "./../../protegesessao.php";
+
 include "./Controllers/Voluntario.controller.php";
 include "./Controllers/GerenciarEscala.controller.php";
 
 
-include "header.html";
 
 
 
+include "layout/header.html"; 
 
 
 
@@ -42,6 +42,16 @@ include "header.html";
 
     .btn {
         margin-bottom: 15px;
+    }
+
+
+
+    a{
+        color: black; 
+    }
+
+    ul{
+        min-width: fit-content; 
     }
 </style>
 

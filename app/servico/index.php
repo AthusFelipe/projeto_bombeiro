@@ -2,41 +2,27 @@
 
 include "./../../protegesessao.php";
 
-include "controller.php";
-include "header.html";
-
-if (isset($_GET['idservico'])) {
-  $conn->prepare('INSERT INTO servicosvoluntario (idservicos, idmilitar) VALUES (?,?)')->execute([$_GET['idservico'], $_SESSION['codfunc']]);
-  header('Location: ./');
-}
-
-
-
-$lss = $conn->query('SELECT * FROM servicos WHERE dataservicos >= curdate() ORDER BY dataservicos DESC, horaservicos ASC ')
-  ->fetchAll(PDO::FETCH_OBJ);
-
-$voluntario = '';
-foreach ($lss as $serv) {
-  $voluntario .= "    <tr>
-                 
-            <td>" . date("D d/m", strtotime($serv->dataservicos)) . "</td>
-            <td>$serv->horaservicos</td>
-            <td>$serv->descricaoservicos</td>
-            <td><a href='?idservico=$serv->idservicos'>Voluntariar</a></td>
-            </tr>";
-}
-
-
+include "layout/header.html"; 
 
 
 
 ?>
 
+<style>
+checkbody {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding-top: 10%;
+      padding-bottom: 10%;
+      background-color: #f0f9ce;
+    }
+
+    
 
 
-
-
-
+</style>
 
 
 <body>
@@ -62,6 +48,7 @@ foreach ($lss as $serv) {
         <div class="card text-white  mb-3" style="max-width: 16rem;">
           <div class="card-body">
             <h5 class="card-title">GERENCIAR ESCALAS</h5>
+
           </div>
         </div>
       </a>
@@ -70,6 +57,17 @@ foreach ($lss as $serv) {
         <div class="card text-white  mb-3" style="max-width: 16rem;">
           <div class="card-body">
             <h5 class="card-title">CADASTRAR SERVIÇO</h5>
+
+          </div>
+        </div>
+      </a>
+
+      
+      <a href='./relatoriomensal.php'>
+        <div class="card text-white  mb-3" style="max-width: 16rem;">
+          <div class="card-body">
+            <h5 class="card-title">RELATÓRIO MENSAL</h5>
+
           </div>
         </div>
       </a>

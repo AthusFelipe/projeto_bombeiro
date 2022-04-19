@@ -1,7 +1,7 @@
 <?php
 include "./../../protegesessao.php"; 
 
-include "header.html"  ; 
+include "layout/header.html"  ; 
 include "controller.php";
 
 
@@ -11,6 +11,8 @@ include "controller.php";
 <body>
 <div class='form-group row'>
     <div class='container'>
+
+    <img class='img-fluid' src="imagens/<?= $retProd->nomeimagem?>">
 
 <form method='get' action=''>
     <input type='number' name='idproduto' value='<?php echo $retProd->idprodutos ;?>' hidden><br>

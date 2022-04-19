@@ -83,9 +83,9 @@ $conn = Conexao::conectar();
 
 
 
-include "header.html";
 
 
+include "layout/header.html";
 
 // 
 ?>
@@ -109,18 +109,33 @@ include "header.html";
   .direita {
     margin-left: 500px;
   }
+ 
+.salvar{
+  float: right; 
+}
+
+.voltar{
+
+  float: left;
+}
+ 
+
 </style>
 
 <body><br>
 
 
   <div class="container text-center">
+  <a href='./index.php'><button class='voltar btn btn-danger'>VOLTAR </button></a>
+
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-      <a href='./index.php'><button class='btn btn-danger'>VOLTAR </button></a>
-      <form method='post'>
+    <form method='post'>
+
+<input class='salvar btn btn-success' type='submit' value='SALVAR'>
+
+
         <div class='container-lg'>
 
-          <input class='btn btn-success ' type='submit' value='SALVAR'>
         </div>
         <br>
 

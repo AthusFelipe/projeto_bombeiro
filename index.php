@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
-  <link href="./bootstrap.css" rel="stylesheet">
+  <link href="./style/bootstrap.css" rel="stylesheet">
   <title>INTRANET COLINAS</title>
 
   <style>

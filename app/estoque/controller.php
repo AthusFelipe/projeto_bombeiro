@@ -24,13 +24,27 @@ include "../../models/Produto.php";
 //CADASTRA NOVO PRODUTO
 
 if(isset($_POST['quantidadeproduto'])){
+    $newname = '' ; 
+    
+        $extensao = strtolower     (substr($_FILES['imagem']['name'], -4)     );
+        $newname = md5(time()); 
+        $diretorio = "imagens/" ; 
+        move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$newname.$extensao);
+        
+
+       
+        
+        
+        
+
+
     $c1 = new Produto   ;
     $c1->novoProduto($_POST['nomeproduto'], $_POST['quantidadeproduto']); 
     
   //  $db = Conexao::conectar() ; 
-    $conn->prepare('INSERT INTO produtos (nomeprodutos, quantidadeprodutos) 
-                    VALUES (?, ?)')
-        ->execute([$c1->getNomeprodutos(), $c1->getQuantidadeprodutos()]); 
+    $conn->prepare('INSERT INTO produtos (nomeprodutos, quantidadeprodutos, nomeimagem) 
+                    VALUES (?, ?, ?)')
+        ->execute([$c1->getNomeprodutos(), $c1->getQuantidadeprodutos(), $newname.$extensao]); 
 
         header('Location: index.php') ; 
 
