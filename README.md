@@ -22,7 +22,7 @@ MÓDULOS:
 			
       c)Gerenciamento das escalas disponíveis (voluntários e escalados) ; (15/04/22);
       			
-      d)Contagem da quantidade de serviços individuais de cada militar;
+      d)Contagem da quantidade de serviços individuais de cada militar; (18/04)
 			
       e)Calendário para visualização dos serviços disponíveis;
       
