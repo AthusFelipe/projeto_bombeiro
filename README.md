@@ -18,13 +18,15 @@ MÓDULOS:
 	 
       a)Cadastro de escalas disponíveis para voluntariado ; (13/04/22)
 			
-      b)Inserição de voluntários nas escalas disponíveis; (14/04/22)
+      b)Inserção de voluntários nas escalas disponíveis; (14/04/22)
 			
       c)Gerenciamento das escalas disponíveis (voluntários e escalados) ; (15/04/22);
-			
+      			
       d)Contagem da quantidade de serviços individuais de cada militar;
 			
       e)Calendário para visualização dos serviços disponíveis;
+      
+      f)Repetir cadastro de serviço (17/04) ; 
       
    
    3)SYSFROTA :
