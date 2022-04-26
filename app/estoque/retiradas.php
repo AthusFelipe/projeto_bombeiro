@@ -1,8 +1,8 @@
-<?php   
-include "./../../protegesessao.php"; 
+<?php
+include "./../../protegesessao.php";
 
-    include "controller.php" ;
-    include "layout/header.html" ; 
+include "Controllers/controller.php";
+include "layout/header.html";
 
 
 
@@ -17,26 +17,25 @@ include "./../../protegesessao.php";
 
 
 
-<div class='container' > 
+<div class='container'>
 
 
-<table class='table'>
-  <tr>
-    <th>Produto</th>
-    <th>Total retirado</th>
-  </tr>
-  <?php $listaretiradas = "";
-   foreach ($retiradas as $retirada) {
-     $listaretiradas .= "
+  <table class='table'>
+    <tr>
+      <th>Produto</th>
+      <th>Total retirado</th>
+    </tr>
+    <?php $listaretiradas = "";
+    foreach ($retiradas as $retirada) {
+      $listaretiradas .= "
      <tr>
      <th> $retirada->nomeprodutos </th>
      <th>$retirada->totalretiradas </th>
-     " ;
-
-  }
-  echo $listaretiradas ; 
-?>
+     ";
+    }
+    echo $listaretiradas;
+    ?>
 
 </div>
 
-<?     include "header.html"  ;  ?>
+<? include "header.html";  ?>

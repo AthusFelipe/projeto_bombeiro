@@ -1,43 +1,46 @@
 <?php
-include "./../../protegesessao.php"; 
+include "./../../protegesessao.php";
 
-include "layout/header.html"  ; 
-include "controller.php";
+include "layout/header.html";
+include "Controllers/produtoController.php";
+
 
 
 ?>
 
-<!DOCTYPE html> 
+
+<!DOCTYPE html>
+
 <body>
-<div class='form-group row'>
-    <div class='container'>
+    <div class='form-group row'>
+        <div class='container'>
 
-    <img class='img-fluid' src="imagens/<?= $retProd->nomeimagem?>">
+            <img class='img-fluid' src="imagens/<?= $retProd->get ?>">
 
-<form method='get' action=''>
-    <input type='number' name='idproduto' value='<?php echo $retProd->idprodutos ;?>' hidden><br>
-    <label for='quantidade'>Produto</label>
-    <div class="col-sm-10">
+            <form method='get' action=''>
+                <input type='number' name='idproduto' value='<?php echo $retProd->getIdprodutos(); ?>' hidden><br>
+                <label for='quantidade'>Produto</label>
+                <div class="col-sm-10">
 
-    <input type='text'  name='nomeproduto' value='<?php echo  $retProd->nomeprodutos ?>' disabled><br><br>
+                    <input type='text' name='nomeproduto' value='<?php echo  $retProd->getNomeprodutos() ?>' disabled><br><br>
+                </div>
+                <label for='quantidade'>Quantidade</label>
+                <div class="col-sm-10">
+
+                    <input type='number' name='quantidade'><br>
+                </div><br>
+                <div class="col-sm-5">
+
+                    <input type='submit' name='adicionar' value='Adicionar'>
+                    <input type='submit' name='remover' value='    Retirar    '>
+                </div>
+
+            </form>
+        </div>
     </div>
-        <label for='quantidade'>Quantidade</label>
-        <div class="col-sm-10">
-
-    <input type = 'number' name='quantidade' ><br>
-        </div><br>
-            <div class="col-sm-5">
-
-    <input type='submit' name='adicionar' value='Adicionar' >
-    <input type='submit' name='remover' value='    Retirar    ' >
-</div>
-
-</form>
-    </div>
-</div>
 
 
 
 </body>
 
- <? include "footer.html"  ; ?>
+<? include "footer.html"; ?>

@@ -1,15 +1,11 @@
 <?php
 // include "./../../protegesessao.php";
 session_start();
-include "controller.php";
+include "Controllers/IndexController.php";
 include "layout/header.html";
 
 
 
-if (isset($_GET['excluir'])) {
-  $idexcluir = $_GET['idexcluir'];
-  Produto::excluirProduto($idexcluir);
-}
 ?>
 
 <style>
