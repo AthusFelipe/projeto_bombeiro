@@ -31,13 +31,13 @@ MÓDULOS:
    
    3)SYSFROTA :
 	 	
-       a)Cadastro de viaturas ; 
+       a)Cadastro de viaturas ; (19/04)
 			 
-       b)Cadastro de deslocamentos;
+       b)Cadastro de deslocamentos; (22/04)
 			 
        c)Cadastro de manutenções;
 			 
-       d)Cadastro de abastecimentos;
+       d)Cadastro de abastecimentos; (21/04)
 			 
        e)Relatórios automáticos;
        
