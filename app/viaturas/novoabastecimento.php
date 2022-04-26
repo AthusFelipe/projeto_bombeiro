@@ -28,7 +28,8 @@ foreach ($vtr as $viatura) {
 
 if (isset($_POST['posto'])) {
 
-    $abastecimento = new Abastecimento(
+    $abastecimento = new Abastecimento ; 
+    $abastecimento->novoAbastecimento(
         $_GET['idviatura'],
         $_POST['posto'],
         $_SESSION['codfunc'],
@@ -39,7 +40,7 @@ if (isset($_POST['posto'])) {
         $_POST['statuspg']
     );
 
-    $conn->prepare('INSERT INTO viaturasabastecimento VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
+    $conn->prepare('INSERT INTO viaturasabastecimento (idviatura, posto, codfunc, combustivel, valor, odometro, notafiscal, statuspg) VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
         ->execute([
             $abastecimento->getIdviatura(), $abastecimento->getPosto(), $abastecimento->getCodfunc(), $abastecimento->getCombustivel(),
             $abastecimento->getValor(), $abastecimento->getOdometro(), $abastecimento->getNotafiscal(), $abastecimento->getStatuspg()

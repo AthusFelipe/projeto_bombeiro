@@ -2,20 +2,24 @@
 
 $conn = Conexao::conectar();
 
-$buscardatadoservico = $conn->prepare('SELECT descricaoservicos, dataservicos, horaservicos FROM servicos WHERE idservicos = ?');
-$buscardatadoservico->execute([$_GET['idservico']]);
-$dadosServico = $buscardatadoservico->fetch(PDO::FETCH_OBJ);
 
 
 
-
+$servico = new Servico ; 
+$servico->pesquisaServico($_GET['idservico']);
 
 
 //CADASTRAR MILITAR NO SERVICO 
 if (isset($_POST['idmilitar'])) {
-    $servescala = new Escala($_GET['idservico'], $_POST['idmilitar']);
-    $conn->prepare('INSERT INTO servicosescala ( idservicos, idmilitar1) VALUES (?, ?) ')
-        ->execute([$servescala->getIdservicos(), $servescala->getIdmilitar()]);
+    $escalarMilitar = new Escala ; 
+    $escalarMilitar->criarEscala($_GET['idservico'], $_POST['idmilitar']);
+    $escalarMilitar->escalaMilitar();
+}
+
+//REMOVER ESCALADO
+if (isset($_POST['removermilitar'])) {
+    $removeMilitar = new Escala ; 
+    $removeMilitar->removeMilitar($_POST['removermilitar']);
 }
 
 
@@ -28,10 +32,6 @@ $l1 = $conn->prepare("SELECT * FROM servicosvoluntario, servicos, usuarios
 $l1->execute([$_GET['idservico']]);
 
 $listaVoluntarios = $l1->fetchAll(PDO::FETCH_OBJ);
-
-
-
-
 
 $voluntarios = '';
 foreach ($listaVoluntarios as $voluntario) {
@@ -55,19 +55,10 @@ foreach ($listaVoluntarios as $voluntario) {
 
 
 
-//REMOVER ESCALADO
-if (isset($_POST['removermilitar'])) {
-    $conn->prepare('DELETE FROM servicosescala WHERE iservicosescala = ?')->execute([$_POST['removermilitar']]);
-}
-
-
-
 // LISTA ESCALADOS 
 $buscaescalados = $conn->prepare('SELECT * FROM servicosescala, usuarios WHERE servicosescala.idservicos = ? AND servicosescala.idmilitar1 = usuarios.codfunc ');
 $buscaescalados->execute([$_GET['idservico']]);
 $listaEscalados = $buscaescalados->fetchAll(PDO::FETCH_OBJ);
-
-
 
 $escalados = '';
 foreach ($listaEscalados as $escalado) {

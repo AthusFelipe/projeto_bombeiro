@@ -1,14 +1,11 @@
 <?php
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+
 include "controller.php";
 
 if (isset($_POST['nomeviatura'])) {
 
-    $ext = strtolower(substr($_FILES['fotoviatura']['name'], -4));
-    $nameimg = date("Y.m.d-H.i.s") . $ext;
+    $nameimg = date("Y.m.d-H.i.s") . $_FILES['fotoviatura']['name'];
     $dir = './imagensviatura/';
     move_uploaded_file($_FILES['fotoviatura']['tmp_name'], $dir . $nameimg);
 

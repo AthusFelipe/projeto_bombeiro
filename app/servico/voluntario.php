@@ -112,6 +112,7 @@ include "layout/header.html";
  
 .salvar{
   float: right; 
+  margin-left:  8rem;
 }
 
 .voltar{
@@ -119,19 +120,24 @@ include "layout/header.html";
   float: left;
 }
  
-
+.inline{
+  display: inline-flex;
+  margin: 0 auto;
+}
 </style>
 
 <body><br>
 
 
   <div class="container text-center">
+    <div class='inline'>
   <a href='./index.php'><button class='voltar btn btn-danger'>VOLTAR </button></a>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
     <form method='post'>
 
 <input class='salvar btn btn-success' type='submit' value='SALVAR'>
+</div>
 
 
         <div class='container-lg'>

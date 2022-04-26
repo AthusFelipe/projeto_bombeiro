@@ -7,15 +7,15 @@ class Conexao extends PDO
 
     public static function conectar()
     {
-        //$pdo = new PDO("mysql:host=localhost;dbname=intranet", "root", "");
-        $pdo = new PDO("mysql:host=localhost;dbname=intranet", "devbombeiro", "193");
+        $pdo = new PDO("mysql:host=localhost;dbname=intranet", "root", "");
+       // $pdo = new PDO("mysql:host=localhost;dbname=intranet", "devbombeiro", "193");
         return $pdo;
     }
 
     public function __construct($pdo)
     {
-        //  $this->pdo = new PDO("mysql:host=localhost;dbname=intranet", "root", "");
-        $this->pdo = new PDO("mysql:host=localhost;dbname=intranet", "devbombeiro", "193");
+          $this->pdo = new PDO("mysql:host=localhost;dbname=intranet", "root", "");
+       // $this->pdo = new PDO("mysql:host=localhost;dbname=intranet", "devbombeiro", "193");
         return $pdo;
     }
 
@@ -32,4 +32,16 @@ class Conexao extends PDO
         $result->execute($values);
         return  $result->fetch(PDO::FETCH_OBJ);
     }
-}
+
+    public function buscar($tabela, $valores = '*', $where = ''){
+        if($where == ''){
+        $this->pdo->query("SELECT $valores FROM $tabela ")->fetchAll(PDO::FETCH_OBJ);}
+        else{ $this->pdo->query("SELECT $valores FROM $tabela WHERE $where")->fetchAll(PDO::FETCH_OBJ);}
+
+
+
+    }
+
+
+    }
+

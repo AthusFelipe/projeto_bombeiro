@@ -68,7 +68,7 @@
 
   <main class="form-signin">
     <form method='post' action='./app/index.php' id='login'>
-      <img class="mb-4" src="./logo.png" alt="" width="119" height="156">
+      <img class="mb-4" src="./style/imgs/logo.png" alt="" width="119" height="156">
       <h1 class="h3 mb-3 fw-normal">Área restrita</h1>
 
       <div class="form-floating">

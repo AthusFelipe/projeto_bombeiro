@@ -37,11 +37,13 @@ include "layout/header.html";
     }
 
     .containert {
-        width: 25%;
+        width: fit-content;
     }
 
     .btn {
         margin-bottom: 15px;
+        
+
     }
 
 
@@ -52,6 +54,19 @@ include "layout/header.html";
 
     ul{
         min-width: fit-content; 
+    }
+
+    .paginacao{
+        background-color: #bf0000;
+        color: white;
+
+    }
+    .paginacao > a{
+        color: white;}
+
+    .rodape > p{
+        font-size:large;
+    
     }
 </style>
 
@@ -66,9 +81,32 @@ include "layout/header.html";
 
 
 
-    <div class='container-fluid containert'>
+    <div class='container-fluid containert text-center'>
+
         <a href='./index.php'><button class='btn btn-danger'>VOLTAR </button></a><br>
+        <div class='paginacao'>
+        Página:
+      <?php for ($i = 1; $i < $numPaginas + 1; $i++) {
+        echo "<a href='?pagina=$i'>" . $i . "</a> ";
+      } ?></div>
+
+
+        <? if(isset($_GET['pagina'])){
+            $pagina = $_GET['pagina'];
+        }else $pagina = 1;?>
+<div class='rodape'>
+        <p>Página: <?=$pagina ?></div>
+
         <?= $LISTATESTE ?>
+
+
+        <div class='paginacao'>
+        Páginas:
+      <?php for ($i = 1; $i < $numPaginas + 1; $i++) {
+        echo "<a href='?pagina=$i'>" . $i . "</a> ";
+      } ?></div><div class='rodape'>
+           <p>Página: <?=$pagina ?></div>
+
 
     </div>
 

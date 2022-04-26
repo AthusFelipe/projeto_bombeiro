@@ -10,19 +10,21 @@ include "controller.php";
 
 
 if (isset($_POST['descricao']) && isset($_POST['dataservico'])) {
-    if(empty($_POST['multiplicarservico'])){
-        $_POST['multiplicarservico'] = 0 ; 
+    if (empty($_POST['multiplicarservico'])) {
+        $_POST['multiplicarservico'] = 0;
     }
 
-    for ($i = 0; $i <= $_POST['multiplicarservico']; $i++){
-        $addData = date('Y/m/d', strtotime($_POST['dataservico']."+{$i} days" )) ;
+    for ($i = 0; $i <= $_POST['multiplicarservico']; $i++) {
+        $addData = date('Y/m/d', strtotime($_POST['dataservico'] . "+{$i} days"));
 
-    $s1 = new Servico($_POST['descricao'], $addData, $_POST['horaservico']);
-    $conn->prepare('INSERT INTO servicos (dataservicos, descricaoservicos, horaservicos) VALUES (?,?, ?)')
-        ->execute([$s1->getDataservico(), $s1->getDescricaoservico(), $s1->getHoraservico()]);
+        $s1 = new Servico;
+
+        $s1->criarServico($_POST['descricao'], $addData, $_POST['horaservico']);
+
+        $conn->prepare('INSERT INTO servicos (dataservicos, descricaoservicos, horaservicos) VALUES (?,?, ?)')
+            ->execute([$s1->getDataservico(), $s1->getDescricaoservico(), $s1->getHoraservico()]);
     }
     header('Location: ./cadastrarservico.php');
-
 }
 
 

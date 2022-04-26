@@ -1,15 +1,16 @@
 <?php
 
 include "./../../protegesessao.php";
-
 include "../../models/Servicos.php";
+
+
 include "../../models/Conexao.php";
 include "../../models/Escalas.php";
 
 
-
-
 include "./Controllers/ModerarEscala.controller.php";
+
+
 
 include "./layout/header.html";
 ?>
@@ -57,8 +58,8 @@ include "./layout/header.html";
     <a href='./gerenciarescala.php'><button class=' btn-danger btn-voltar'>VOLTAR</button></a><br><br><br>
     <ul class="list-group">
       <li class="list-group-item lista-cinza text-white" aria-current="true">
-        SERVIÇO DIURNO DE <b><?= date("d/m(D)", strtotime($dadosServico->dataservicos)) ?></b></li>
-      <li class="list-group-item " aria-current="true"> <?= $dadosServico->horaservicos . " (" . $dadosServico->descricaoservicos . ")";  ?> </li>
+        SERVIÇO DIURNO DE <b><?= date("d/m(D)", strtotime($servico->getDataservico())) ?></b></li>
+      <li class="list-group-item " aria-current="true"> <?= $servico->getHoraservico() . " (" . $servico->getDescricaoservico() . ")";  ?> </li>
       <br>
       <hr>
   </div>

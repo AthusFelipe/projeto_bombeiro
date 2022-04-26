@@ -1,9 +1,15 @@
 <?php
 
 
-$lss = $conn->query('SELECT * FROM servicos WHERE dataservicos >= curdate() ORDER BY idservicos ASC')
+$pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+$total = (count($lss));
+$registros = 10;
+$numPaginas = ceil($total / $registros);
+$inicio = ($registros * $pagina) - $registros;
+$lss = $conn->query("SELECT * FROM servicos  ORDER BY dataservicos DESC limit $inicio , $registros")
 
     ->fetchAll(PDO::FETCH_OBJ);
+
 
 
 
@@ -54,9 +60,12 @@ foreach ($lss as $serv) {
     <li class='list-group-item d-flex justify-content-between align-items-start $styl'>
                         <div class='ms-2 me-auto'>
                           <div class='fw-bold text-center'>" . $serv->descricaoservicos . " " . date('d/m', strtotime($serv->dataservicos)) . " </div>
-                          <a class='text-center' href='./moderarescala.php?idservico=$serv->idservicos'>$ret  </a>
+                          <a class='text-center ' href='./moderarescala.php?idservico=$serv->idservicos'>$ret  </a>
                         </div>
                         <span class='badge bg-primary rounded-pill'>$totalVoluntarios->totalvoluntario</span>
 
                       </li></a></ul><br>";
 }
+
+
+

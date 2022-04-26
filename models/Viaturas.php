@@ -13,6 +13,7 @@ class Viatura
     private string $combustivel;
     private string $chassi;
     private string $categoria;
+    private string $fotoviatura ; 
 
 
 
@@ -40,6 +41,31 @@ class Viatura
         $this->categoria = $cat;
     }
 
+
+    public function retornaViatura($idvtr){
+        global $conn;
+        $v1 = $conn->query("SELECT * FROM viaturascadastro, viaturasinformacao WHERE idviaturas = '$idvtr' and idviaturas = idviatura")
+        ->fetch(PDO::FETCH_OBJ); 
+
+
+
+       $this->modelo = $v1->modelo ;
+       $this->placa = $v1->placa;
+       $this->fabricante = ($v1->fabricante);
+       $this->combustivel = ($v1->combustivel);
+       $this->chassi = ($v1->chassi);
+       $this->categoria = ($v1->categoria);
+       $this->idviatura = ($v1->idviatura);
+       $this->nomeviatura = ($v1->nomeviatura);
+       $this->status = ($v1->statusviatura);
+       $this->fotoviatura = $v1->fotoviatura;
+
+
+
+
+
+
+    }
     /**
      * Get the value of idviatura
      */
@@ -239,182 +265,27 @@ class Viatura
 
         return $this;
     }
-}
-
-
-
-class Abastecimento
-{
-
-    public $idviatura;
-    private $posto;
-    public $codfunc;
-    private $combustivel;
-    private $valor;
-    private $odometro;
-    private $notafiscal;
-    private $statuspg;
-
-    public function __construct($idviat, $post, $cod, $comb, $val, $odo, $not, $sta)
-    {
-
-        $this->idviatura = $idviat;
-        $this->posto = $post;
-        $this->codfunc = $cod;
-        $this->combustivel = $comb;
-        $this->valor = $val;
-        $this->odometro = $odo;
-        $this->notafiscal = $not;
-        $this->statuspg = $sta;
-    }
-
-
 
     /**
-     * Get the value of idviatura
-     */
-    public function getIdviatura()
+     * Get the value of fotoviatura
+     */ 
+    public function getFotoviatura()
     {
-        return $this->idviatura;
+        return $this->fotoviatura;
     }
 
     /**
-     * Get the value of posto
-     */
-    public function getPosto()
-    {
-        return $this->posto;
-    }
-
-    /**
-     * Set the value of posto
+     * Set the value of fotoviatura
      *
      * @return  self
-     */
-    public function setPosto($posto)
+     */ 
+    public function setFotoviatura($fotoviatura)
     {
-        $this->posto = $posto;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of codfunc
-     */
-    public function getCodfunc()
-    {
-        return $this->codfunc;
-    }
-
-    /**
-     * Set the value of codfunc
-     *
-     * @return  self
-     */
-    public function setCodfunc($codfunc)
-    {
-        $this->codfunc = $codfunc;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of combustivel
-     */
-    public function getCombustivel()
-    {
-        return $this->combustivel;
-    }
-
-    /**
-     * Set the value of combustivel
-     *
-     * @return  self
-     */
-    public function setCombustivel($combustivel)
-    {
-        $this->combustivel = $combustivel;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of valor
-     */
-    public function getValor()
-    {
-        return $this->valor;
-    }
-
-    /**
-     * Set the value of valor
-     *
-     * @return  self
-     */
-    public function setValor($valor)
-    {
-        $this->valor = $valor;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of odometro
-     */
-    public function getOdometro()
-    {
-        return $this->odometro;
-    }
-
-    /**
-     * Set the value of odometro
-     *
-     * @return  self
-     */
-    public function setOdometro($odometro)
-    {
-        $this->odometro = $odometro;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of notafiscal
-     */
-    public function getNotafiscal()
-    {
-        return $this->notafiscal;
-    }
-
-    /**
-     * Set the value of notafiscal
-     *
-     * @return  self
-     */
-    public function setNotafiscal($notafiscal)
-    {
-        $this->notafiscal = $notafiscal;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of statuspg
-     */
-    public function getStatuspg()
-    {
-        return $this->statuspg;
-    }
-
-    /**
-     * Set the value of statuspg
-     *
-     * @return  self
-     */
-    public function setStatuspg($statuspg)
-    {
-        $this->statuspg = $statuspg;
+        $this->fotoviatura = $fotoviatura;
 
         return $this;
     }
 }
+
+
+

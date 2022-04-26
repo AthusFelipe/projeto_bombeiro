@@ -8,16 +8,27 @@ class Servico {
     private $descricaoservico ; 
     private $horaservico ; 
 
-    public function __construct($desc, $data, $hora){
+    public function criarServico($desc, $data, $hora){
         $this->dataservico = $data;
         $this->descricaoservico = $desc ; 
         $this->horaservico = $hora; 
     }
 
-    public function pesquisa($id, $data, $desc){
-        $this->idservico = $id;
-        $this->dataservico = $data;
-        $this->descricaoservico = $desc ; 
+    public function pesquisaServico($idservico){
+        global $conn;
+       $s1 =  $conn->query("SELECT * FROM servicos WHERE idservicos = '$idservico'")
+             ->fetch(PDO::FETCH_OBJ) ; 
+           
+             
+        $this->idservico = $s1->idservicos ;
+        $this->dataservico = $s1->dataservicos ;
+        $this->descricaoservico = $s1->descricaoservicos ; 
+        $this->horaservico = $s1->horaservicos ;
+
+             
+        
+
+
     }
 
     /**

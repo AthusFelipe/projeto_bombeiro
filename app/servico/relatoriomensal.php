@@ -41,7 +41,8 @@ include "layout/header.html";
 <!DOCTYPE html>
 <style>
      .containert {
-        width: 25%;
+        width:fit-content;
+        
     }
 
     .thead-color{
@@ -54,7 +55,12 @@ include "layout/header.html";
         align-items: center;
     }
     table{
+      margin: 0 auto;
+    
         min-width: fit-content ; 
+        border-style:solid;
+      border-color: #bf0000;
+      padding: 10px;
     }
 </style>
 <body>

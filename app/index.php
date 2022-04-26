@@ -38,7 +38,7 @@ include "./servico/layout/header.html";
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
-  <link href="./../bootstrap.css" rel="stylesheet">
+  <link href="./../style/bootstrap.css" rel="stylesheet">
   <title>INTRANET COLINAS</title>
   <style>
     .body {
@@ -85,9 +85,8 @@ include "./servico/layout/header.html";
 
 
 
-
-
 <div class='body'>
+
 
   <div id='meio' class='container text-center center '>
 
@@ -108,6 +107,14 @@ include "./servico/layout/header.html";
         </div>
       </div>
     </a>
+
+    
+    <a href='./viaturas/'>
+      <div class="card text-white  mb-3" style="max-width: 16rem;">
+        <div class="card-body">
+          <h5 class="card-title">SYSFROTA</h5>
+        </div>
+      </div>
   </div>
 
 
