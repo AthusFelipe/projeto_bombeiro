@@ -12,7 +12,7 @@ include "./Controllers/ModerarEscala.controller.php";
 
 
 
-include "./layout/header.html";
+include "./../../style/header.html";
 ?>
 
 

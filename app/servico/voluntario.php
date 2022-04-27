@@ -6,6 +6,8 @@ include "./../../protegesessao.php";
 include "./Controllers/Voluntario.controller.php";
 
 
+
+
 $conn = Conexao::conectar();
 
 
@@ -85,8 +87,8 @@ $conn = Conexao::conectar();
 
 
 
-include "layout/header.html";
 
+include "./../../style/header.html";
 // 
 ?>
 
@@ -109,21 +111,21 @@ include "layout/header.html";
   .direita {
     margin-left: 500px;
   }
- 
-.salvar{
-  float: right; 
-  margin-left:  8rem;
-}
 
-.voltar{
+  .salvar {
+    float: right;
+    margin-left: 8rem;
+  }
 
-  float: left;
-}
- 
-.inline{
-  display: inline-flex;
-  margin: 0 auto;
-}
+  .voltar {
+
+    float: left;
+  }
+
+  .inline {
+    display: inline-flex;
+    margin: 0 auto;
+  }
 </style>
 
 <body><br>
@@ -131,36 +133,35 @@ include "layout/header.html";
 
   <div class="container text-center">
     <div class='inline'>
-  <a href='./index.php'><button class='voltar btn btn-danger'>VOLTAR </button></a>
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-    <form method='post'>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <form method='post'>
 
-<input class='salvar btn btn-success' type='submit' value='SALVAR'>
-</div>
+      </div>
 
 
-        <div class='container-lg'>
+      <div class='container-lg'>
 
-        </div>
-        <br>
+      </div>
+      <br>
 
 
 
 
     </div>
-    <h1>Serviços disponíveis</h1>
-    <div class='table-responsive'>
-      <table class="table   table-hover ">
+    <h3>Serviços disponíveis</h3>
+    <div class='container'>
+      <table class="tabela">
 
-        <thead class='thead'>
-          <tr>
-            <th scope="col">HORA</th>
-            <th scope="col">DIA</th>
-            <th scope="col">DESCRICAO</th>
-            <th scope="col">STATUS</th>
-          </tr>
-        </thead>
+
+        <tr class='tabela-cabecalho'>
+          <th scope="col">HORA</th>
+          <th scope="col">DIA</th>
+          <th scope="col">DESCRICAO</th>
+          <th scope="col">STATUS</th>
+        </tr>
+
+
         <tbody>
 
 

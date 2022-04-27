@@ -2,7 +2,7 @@
 include "./../../protegesessao.php";
 
 include "Controllers/controller.php";
-include "layout/header.html";
+include "./../../style/header.html";
 
 
 
@@ -13,15 +13,20 @@ include "layout/header.html";
 
 
 ?>
+<html>
 
 
 
-
+<div class='botao-voltar2'>
+  <a class='botao-voltar ' href='./index.php'>VOLTAR</a>
+</div>
 <div class='container'>
 
+  <h3>HISTÓRICO DE RETIRADAS</h3>
 
-  <table class='table'>
-    <tr>
+
+  <table class='tabela'>
+    <tr class='tabela-cabecalho'>
       <th>Produto</th>
       <th>Total retirado</th>
     </tr>
@@ -30,7 +35,7 @@ include "layout/header.html";
       $listaretiradas .= "
      <tr>
      <th> $retirada->nomeprodutos </th>
-     <th>$retirada->totalretiradas </th>
+     <th>$retirada->quantidaderetirada </th>
      ";
     }
     echo $listaretiradas;

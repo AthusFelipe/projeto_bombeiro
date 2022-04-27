@@ -1,0 +1,229 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700;800&display=swap');
+
+
+body{
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.navbar-container{
+    background-color:#ce0a0a ;
+    display:block;
+    flex-direction: column;
+    color: white;
+}
+.tabela-cabecalho{
+    background-color: #ce0a0a ;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.itemtabela-selecionado:hover{
+    background-color: rgb(171, 247, 171);
+
+}
+
+
+.botao-voltar2{
+    width: 65%;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    
+   
+
+}
+.nomeproduto-estoque{
+    color:rgb(1, 8, 104);
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    font-size: 18px;
+}
+.itemtabela-selecionado a{
+    text-decoration: none;
+}
+.itemtabela-selecionado a:hover{
+    color: darkblue;
+}
+.tabela{
+    width: 80%;
+    text-align: center;
+    
+    margin-top: 10px;
+ }
+ .botao-estoque-adicionar{
+     background-color: #025a27;
+     color: rgb(255, 255, 255);
+ }
+
+ .botao-estoque-retirar{
+    background-color: #880303;
+    color: rgb(255, 255, 255);
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.borda{
+    border-color: fuchsia;
+    border-style:solid;
+    border-width: 2px;
+}
+
+ul{
+    display:flex;
+    flex-direction: row;
+    gap: 50%;
+    justify-content: center;
+   
+    
+
+}
+.itemsnavbar{
+    padding: 0;
+    display:flex;
+    font-weight: bold;
+    margin: 0 auto;
+    justify-content: flex-start;
+    gap: 3rem;
+    align-items: center;
+    height: fit-content;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.navbar{
+    background-color: #c54040;
+    height: fit-content;
+    color: white;
+    
+    
+
+    border-color: black;
+    border-style:solid;
+}
+
+
+
+
+
+
+
+.div-botao-criar{
+    display:flex;
+    justify-content: center;
+    margin: 0.5rem;
+}
+.botao-criar{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: #058038;
+    color: white;
+    
+
+    
+}
+
+
+.itemnavbar{
+    color: white;
+    text-decoration: none;
+}
+.itemnavbar:hover{
+    color:white;
+    text-decoration: underline;
+}
+.navbar-items{
+    border-style:solid;
+    border-color:black;
+}
+
+.botao-criar:hover{
+    background-color: rgb(4, 148, 11);
+    display: flex;
+    
+}
+
+.block{
+    display:block;
+ 
+}
+
+.items-formulario{
+    padding: 0;
+    display: flex;
+    justify-content: baseline;
+    flex-direction: column;
+}
+.item-formulario{
+   margin-top: 5px;
+   margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+::placeholder{
+    color: gray;
+    font-size: 14px;
+}
+
+.formulario{
+    border-style: solid;
+    border-color:#bf0000;
+    padding: 0 0.5rem;
+    border-radius: 10px;
+    border-width: 1px;
+}
+.botao-voltar{
+    align-items: center;
+    margin-bottom: 0.8rem;
+    background-color: #bf0000;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.botao-voltar a{
+    color: white;
+    text-decoration: none;
+    
+}
+.aviso-escala{
+    background-color: red;
+}
+.navired{
+    color: WHITE;
+        background-color: #bf0000 ;
+        font-weight: bold;
+        display: inline-flex;
+        margin: 0;
+        justify-content: flex-start;
+        gap: 30px;
+        padding: 0;
+    
+}
+.botao-voltar:hover{
+    background-color: #fc1212;
+}
+
+.item-formulario input{
+    border-color: #bf0000;
+    border-width: 0.01rem;
+    border-radius: 5px;
+}
+
+input:focus{
+    color:rgb(1, 104, 15)
+}

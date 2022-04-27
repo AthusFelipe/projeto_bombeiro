@@ -8,7 +8,7 @@ include "./Controllers/GerenciarEscala.controller.php";
 
 
 
-include "layout/header.html"; 
+include "./../../style/header.html";
 
 
 
@@ -42,31 +42,33 @@ include "layout/header.html";
 
     .btn {
         margin-bottom: 15px;
-        
+
 
     }
 
 
 
-    a{
-        color: black; 
+    a {
+        color: black;
     }
 
-    ul{
-        min-width: fit-content; 
+    ul {
+        min-width: fit-content;
     }
 
-    .paginacao{
+    .paginacao {
         background-color: #bf0000;
         color: white;
 
     }
-    .paginacao > a{
-        color: white;}
 
-    .rodape > p{
-        font-size:large;
-    
+    .paginacao>a {
+        color: white;
+    }
+
+    .rodape>p {
+        font-size: large;
+
     }
 </style>
 
@@ -85,27 +87,33 @@ include "layout/header.html";
 
         <a href='./index.php'><button class='btn btn-danger'>VOLTAR </button></a><br>
         <div class='paginacao'>
-        Página:
-      <?php for ($i = 1; $i < $numPaginas + 1; $i++) {
-        echo "<a href='?pagina=$i'>" . $i . "</a> ";
-      } ?></div>
+            Página:
+            <?php for ($i = 1; $i < $numPaginas + 1; $i++) {
+                echo "<a href='?pagina=$i'>" . $i . "</a> ";
+            } ?></div>
 
 
-        <? if(isset($_GET['pagina'])){
+        <? if (isset($_GET['pagina'])) {
             $pagina = $_GET['pagina'];
-        }else $pagina = 1;?>
-<div class='rodape'>
-        <p>Página: <?=$pagina ?></div>
+        } else $pagina = 1; ?>
+        <div class='rodape'>
+            <p>Página: <?= $pagina ?>
+        </div>
 
-        <?= $LISTATESTE ?>
+
+        <div class='w3-card-4'>
+            <?= $LISTATESTE ?>
+        </div>
 
 
         <div class='paginacao'>
-        Páginas:
-      <?php for ($i = 1; $i < $numPaginas + 1; $i++) {
-        echo "<a href='?pagina=$i'>" . $i . "</a> ";
-      } ?></div><div class='rodape'>
-           <p>Página: <?=$pagina ?></div>
+            Páginas:
+            <?php for ($i = 1; $i < $numPaginas + 1; $i++) {
+                echo "<a href='?pagina=$i'>" . $i . "</a> ";
+            } ?></div>
+        <div class='rodape'>
+            <p>Página: <?= $pagina ?>
+        </div>
 
 
     </div>

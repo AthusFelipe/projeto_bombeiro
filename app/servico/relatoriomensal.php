@@ -1,6 +1,7 @@
 <?php
 include "./../../protegesessao.php";
-include "Controllers/controller.php"; 
+include "Controllers/controller.php";
+include "./../../style/header.html";
 
 
 
@@ -10,81 +11,82 @@ $contagemMensal = $conn->query("SELECT  usuarios.nomeguerra as nomeguerra, usuar
                                  AND month(servicos.dataservicos) = month(curdate()) 
                                  AND usuarios.codfunc = servicosescala.idmilitar1 
                                  GROUP BY servicosescala.idmilitar1 ORDER BY usuarios.nomeguerra")
-                       ->fetchAll(PDO::FETCH_OBJ);
+  ->fetchAll(PDO::FETCH_OBJ);
 
 
 
-$tabelaMilitarMensal = ''; 
-foreach ($contagemMensal as $militarMensal){
+$tabelaMilitarMensal = '';
+foreach ($contagemMensal as $militarMensal) {
 
 
 
-    $tabelaMilitarMensal .=   "<tr>
+  $tabelaMilitarMensal .=   "<tr>
     <th scope='row'>$militarMensal->cargo $militarMensal->nomeguerra</th>
     <td>$militarMensal->totalservicosmes</td>
     
-  </tr>"
-    
-    
-    ; 
+  </tr>";
 }
 
-function mesAtual(){
-    $hoje = getdate(); 
-    echo  $hoje['month']; 
-} 
+function mesAtual()
+{
+  $hoje = getdate();
+  echo  $hoje['month'];
+}
 
 
-include "layout/header.html"; 
+include "layout/header.html";
 ?>
 
 <!DOCTYPE html>
 <style>
-     .containert {
-        width:fit-content;
-        
-    }
+  .containert {
+    width: fit-content;
 
-    .thead-color{
-        background-color: #bf0000 ; 
-    }
+  }
 
-    div{
-        margin: 0 auto ; 
-        margin-top: 30px; 
-        align-items: center;
-    }
-    table{
-      margin: 0 auto;
-    
-        min-width: fit-content ; 
-        border-style:solid;
-      border-color: #bf0000;
-      padding: 10px;
-    }
+  .thead-color {
+    background-color: #bf0000;
+  }
+
+  div {
+    margin: 0 auto;
+    margin-top: 30px;
+    align-items: center;
+  }
+
+  table {
+    margin: 0 auto;
+
+    min-width: fit-content;
+    border-style: solid;
+    border-color: #bf0000;
+    padding: 10px;
+  }
 </style>
+
 <body>
 
 
-<div class='container-fluid containert text-center'>
-        <a href='./index.php'><button class='btn btn-danger'>VOLTAR </button></a><br>
-      
+  <div class='container-fluid containert text-center'>
+    <a href='./index.php'><button class='btn btn-danger'>VOLTAR </button></a><br>
+
 
     <br>
-        <p class='center-text' >MÊS: <b><?= mesAtual()  ?></b> </p></div>
-    <div class='containert container-fluid'>
-        
-<table class="table text-center">
-  <thead class='thead-color' >
-    <tr>
-      <th scope="col">MILITAR</th>
-      <th scope="col">SERVIÇOS</th>
-    </tr>
-  </thead>
-  <tbody>
-<?= $tabelaMilitarMensal ;?>
-  </tbody>
-</table>
-</div>
+    <p class='center-text'>MÊS: <b><?= mesAtual()  ?></b> </p>
+  </div>
+  <div class='containert container-fluid'>
+
+    <table class="table text-center">
+      <thead class='thead-color'>
+        <tr>
+          <th scope="col">MILITAR</th>
+          <th scope="col">SERVIÇOS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?= $tabelaMilitarMensal; ?>
+      </tbody>
+    </table>
+  </div>
 
 </body>
