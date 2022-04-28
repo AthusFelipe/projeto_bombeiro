@@ -9,7 +9,7 @@ class Escala extends Servico
     private $idmilitar;
     private $idservicosescala;
 
-    
+
 
 
 
@@ -17,6 +17,8 @@ class Escala extends Servico
     {
         $this->idservicos = $idserv;
         $this->idmilitar = $idmil;
+
+        $this->escalaMilitar();
     }
 
 
@@ -27,21 +29,23 @@ class Escala extends Servico
         $this->idmilitar1 = $idmil;
     }
 
-    
-    public function escalaMilitar(){
-        global $conn; 
+
+    public function escalaMilitar()
+    {
+        global $conn;
         $conn->prepare('INSERT INTO servicosescala ( idservicos, idmilitar1) VALUES (?, ?) ')
-        ->execute([$this->getIdservicos(), $this->getIdmilitar()]);
-
-
-
+            ->execute([$this->getIdservicos(), $this->getIdmilitar()]);
     }
 
-    public function removeMilitar($iservicoescala){
+    public static function removeMilitar($iservicoescala)
+    {
         global $conn;
         $conn->prepare('DELETE FROM servicosescala WHERE iservicosescala = ?')->execute([$iservicoescala]);
-
     }
+
+
+
+
 
     /**
      * Get the value of idservicos

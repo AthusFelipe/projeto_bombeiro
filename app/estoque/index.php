@@ -8,7 +8,22 @@ include "./../login.php";
 include "./../../style/header.html";
 
 
+$listaProdutos = "";
 
+foreach ($estoque as $produto) {
+
+  $usuarioLogado->getNivelAcesso() == 2 ? $escondeOpcao = "<th class='itemtabela-selecionado'><a class='itemtabela-selecionado' href='index.php?excluir=" . $produto->idprodutos . "'>EXCLUIR</a> </th></tr> " : $escondeOpcao = '';
+
+
+
+
+
+  $listaProdutos .= "
+     <tr  class='itemtabela-selecionado'>      
+     <th class='itemtabela-selecionado'> 
+     <a  class='itemtabela-selecionado' href='produto.php?selecionado=" . $produto->idprodutos . "'>$produto->nomeprodutos</a> 
+     <th class='itemtabela-selecionado'>$produto->quantidadeprodutos </th> $escondeOpcao    ";
+}
 ?>
 
 <style>
@@ -21,7 +36,6 @@ include "./../../style/header.html";
 
 
   <table class='tabela'>
-<?= $usuarioLogado->getNomeguerra();?>
     <tr class='tabela-cabecalho'>
 
       <th>Produto</th>
@@ -30,28 +44,8 @@ include "./../../style/header.html";
 
     </tr>
 
-    <?php $listaProdutos = "";
-
-    foreach ($estoque as $produto) {
-
-      $usuarioLogado->getNivelAcesso() == 2 ? $escondeOpcao = "<th class='itemtabela-selecionado'><a class='itemtabela-selecionado' href='index.php?excluir=".$produto->idprodutos."'>EXCLUIR</a> </th>' " : $escondeOpcao = ''; 
-
-
-
-
-
-      $listaProdutos .= "
-     <tr  class='itemtabela-selecionado'>
-     
-         
-     <form method='get' action=''> <th class='itemtabela-selecionado'> <a  class='itemtabela-selecionado' href='produto.php?selecionado=" . $produto->idprodutos . "'>$produto->nomeprodutos</a> 
-     <th class='itemtabela-selecionado'>$produto->quantidadeprodutos </th> $escondeOpcao    ";
-    }
+    <?php
     echo $listaProdutos;
     ?>
 
 </div>
-
-
-
-<? include "header.html";  ?>

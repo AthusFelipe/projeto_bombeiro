@@ -11,7 +11,7 @@ class Abastecimento
     private $odometro;
     private $notafiscal;
     private $statuspg;
-    private $dataabastecimento ;
+    private $dataabastecimento;
     public function novoAbastecimento($idviat, $post, $cod, $comb, $val, $odo, $not, $sta)
     {
 
@@ -23,8 +23,18 @@ class Abastecimento
         $this->odometro = $odo;
         $this->notafiscal = $not;
         $this->statuspg = $sta;
+
+
+        $this->cadastrarAbastecimento();
     }
 
+
+    private function cadastrarAbastecimento()
+    {
+        global $conn;
+        $conn->prepare('INSERT INTO viaturasabastecimento (idviatura, posto, codfunc, combustivel, valor, odometro, notafiscal, statuspg) VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
+            ->execute([$this->idviatura, $this->posto, $this->codfunc, $this->combustivel, $this->valor, $this->odometro, $this->notafiscal, $this->statuspg]);
+    }
 
 
 

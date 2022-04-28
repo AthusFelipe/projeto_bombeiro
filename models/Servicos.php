@@ -14,6 +14,17 @@ class Servico
         $this->dataservico = $data;
         $this->descricaoservico = $desc;
         $this->horaservico = $hora;
+
+        $this->cadastrarServicoNoDB();
+    }
+
+
+    private function cadastrarServicoNoDB()
+    {
+        global $conn;
+        $conn->prepare('INSERT INTO servicos (dataservicos, descricaoservicos, horaservicos) 
+                        VALUES (?, ?, ?)')
+            ->execute([$this->dataservico, $this->descricaoservico, $this->horaservico]);
     }
 
     public function pesquisaServico($idservico)
@@ -30,7 +41,8 @@ class Servico
     }
 
 
-    static function excluirServico($id){
+    static function excluirServico($id)
+    {
         global $conn;
         $conn->prepare('DELETE FROM servicos WHERE idservicos = ?')->execute([$id]);
     }
@@ -64,5 +76,13 @@ class Servico
     public function getHoraservico()
     {
         return $this->horaservico;
+    }
+
+
+    public static function buscaVoluntarioDoMilitar($codfunc)
+    {
+
+        global $conn;
+        return $conn->query("SELECT * FROM servicosvoluntario WHERE idmilitar = $codfunc ")->fetchAll(PDO::FETCH_OBJ);
     }
 }

@@ -6,9 +6,8 @@ $conn = Conexao::conectar();
 
 
 //BUSCA OS SERVIÇOS DO MILITAR COM BASE NO ID QUE JÁ ESTÃO NO BANCO
-$retornacheck = $conn->prepare('SELECT * FROM servicosvoluntario WHERE idmilitar = ?');
-$retornacheck->execute([$_SESSION['codfunc']]);
-$buscaCheckbox = $retornacheck->fetchAll(PDO::FETCH_OBJ);
+
+$buscaCheckbox = Servico::buscaVoluntarioDoMilitar($_SESSION['codfunc']);
 
 $result = [];
 foreach ($buscaCheckbox as $check) {
@@ -55,7 +54,7 @@ $lss = $conn->query("SELECT * FROM servicos WHERE dataservicos >= curdate() ORDE
   ->fetchAll(PDO::FETCH_OBJ);
 $voluntario = '';
 foreach ($lss as $serv) {
-  
+
   $res = in_array($serv->idservicos, $result) ? "checked" : "unchecked";
   $voluntario .= "    <tr><td>$serv->horaservicos</td>
                    
@@ -65,10 +64,3 @@ foreach ($lss as $serv) {
               <td><input name='idservicoescolhido[]' type='checkbox' value='$serv->idservicos' $res ></input></td>
                   </tr>";
 }
-
-
-
-
-
-
-                 

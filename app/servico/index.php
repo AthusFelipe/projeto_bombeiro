@@ -1,7 +1,5 @@
 <?php
-
-include "./../../protegesessao.php";
-
+include "./Controllers/controller.php";
 include "./../../style/header.html";
 
 

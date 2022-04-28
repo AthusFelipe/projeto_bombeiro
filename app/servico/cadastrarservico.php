@@ -2,7 +2,6 @@
 
 include "./Controllers/CadastrarServico.controller.php";
 
-include "./../login.php";
 
 
 
@@ -36,7 +35,6 @@ setlocale(LC_TIME, 'portuguese');
 
     <div class="row">
       <div class="col-sm"> <br>
-        <a href='./index.php'><button class='btn btn-sm btn-primary'>VOLTAR</button></a><br>
         <form method='POST' action='cadastrarservico.php'>
 
           <br>

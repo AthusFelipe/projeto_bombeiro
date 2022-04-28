@@ -5,21 +5,19 @@ $conn = Conexao::conectar();
 
 
 
-$servico = new Servico ; 
+$servico = new Servico;
 $servico->pesquisaServico($_GET['idservico']);
 
 
 //CADASTRAR MILITAR NO SERVICO 
 if (isset($_POST['idmilitar'])) {
-    $escalarMilitar = new Escala ; 
+    $escalarMilitar = new Escala;
     $escalarMilitar->criarEscala($_GET['idservico'], $_POST['idmilitar']);
-    $escalarMilitar->escalaMilitar();
 }
 
 //REMOVER ESCALADO
 if (isset($_POST['removermilitar'])) {
-    $removeMilitar = new Escala ; 
-    $removeMilitar->removeMilitar($_POST['removermilitar']);
+    Escala::removeMilitar($_POST['removermilitar']);
 }
 
 
@@ -38,7 +36,7 @@ foreach ($listaVoluntarios as $voluntario) {
     $totalServicosMes = $conn->query("SELECT  count(servicos.idservicos) as totalservicosmes 
                                    FROM servicosescala, servicos
                                    WHERE servicos.idservicos = servicosescala.idservicos and servicosescala.idmilitar1 = $voluntario->idmilitar 
-                                   AND month(servicos.dataservicos) = month(curdate()) ; ")->fetch(); 
+                                   AND month(servicos.dataservicos) = month(curdate()) ; ")->fetch();
 
 
 

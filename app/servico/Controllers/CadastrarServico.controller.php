@@ -1,7 +1,13 @@
 <?php
 
 
-include "controller.php";
+include "../../models/Servicos.php";
+include "../../models/Conexao.php";
+include "../../models/User.php";
+
+include "./../login.php";
+
+$conn = Conexao::conectar();
 
 
 
@@ -21,9 +27,6 @@ if (isset($_POST['descricao']) && isset($_POST['dataservico'])) {
         $s1 = new Servico;
 
         $s1->criarServico($_POST['descricao'], $addData, $_POST['horaservico']);
-
-        $conn->prepare('INSERT INTO servicos (dataservicos, descricaoservicos, horaservicos) VALUES (?,?, ?)')
-            ->execute([$s1->getDataservico(), $s1->getDescricaoservico(), $s1->getHoraservico()]);
     }
     header('Location: ./cadastrarservico.php');
 }

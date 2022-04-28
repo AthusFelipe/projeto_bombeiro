@@ -5,33 +5,19 @@ include_once "./../models/User.php";
 $conn = Conexao::conectar();
 
 
-session_start();
+Usuario::sessionstart();
 
-if(isset($_POST['nomeusuario']) && isset($_POST['senhausuario'])){
-$username = $_POST['nomeusuario'];
-$password = $_POST['senhausuario'];
-$user = new Usuario;
-$user->logar($username, $password);
+if (isset($_POST['nomeusuario']) && isset($_POST['senhausuario'])) {
 
-$_SESSION['codfunc'] = $user->getCodfunc();
-$_SESSION['nomeguerra'] = $user->getNomeguerra();
-$_SESSION['cargo'] = $user->getCargo() ; 
-$_SESSION['nivelacesso'] = $user->getNivelAcesso() ; 
+  $user = new Usuario;
+  $user->logar($_POST['nomeusuario'], $_POST['senhausuario']);
+} elseif (!$_SESSION['codfunc']) {
+  echo "Você não está conectado";
+  header('location: http://127.0.0.1/bombeiros/');
+  die();
+} else {
 
-header('location: http://127.0.0.1/bombeiros/app/estoque/index.php') ;
-
-}
-
-elseif(!$_SESSION['codfunc']){
-    echo "Você não está conectado" ;
-    header('location: http://127.0.0.1/bombeiros/');
-    die();
-
-}
-else {
-
-    header('location: http://127.0.0.1/bombeiros/app/estoque/index.php') ;
-
+  header('location: http://127.0.0.1/bombeiros/app/estoque/index.php');
 }
 
 
@@ -117,7 +103,7 @@ else {
       </div>
     </a>
 
-    
+
     <a href='./viaturas/'>
       <div class="card text-white  mb-3" style="max-width: 16rem;">
         <div class="card-body">
