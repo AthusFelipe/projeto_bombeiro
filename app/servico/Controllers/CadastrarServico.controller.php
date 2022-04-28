@@ -9,6 +9,7 @@ include "controller.php";
 
 
 
+
 if (isset($_POST['descricao']) && isset($_POST['dataservico'])) {
     if (empty($_POST['multiplicarservico'])) {
         $_POST['multiplicarservico'] = 0;
@@ -34,7 +35,7 @@ if (isset($_POST['descricao']) && isset($_POST['dataservico'])) {
 
 
 if (isset($_GET['excluir'])) {
-    $conn->prepare('DELETE FROM servicos WHERE idservicos = ?')->execute([$_GET['excluir']]);
+    Servico::excluirServico($_GET['excluir']);
     header('Location: ./cadastrarservico.php');
 }
 

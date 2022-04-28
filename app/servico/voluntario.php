@@ -1,5 +1,5 @@
 <?php
-
+include "./Controllers/controller.php";
 include "./../../protegesessao.php";
 
 

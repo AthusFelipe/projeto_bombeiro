@@ -1,6 +1,8 @@
 <?php
 include "../../models/Conexao.php";
 include "../../models/Produto.php";
+include "../../models/User.php";
+
 
 
 

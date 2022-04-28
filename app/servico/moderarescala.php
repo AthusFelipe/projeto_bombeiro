@@ -1,18 +1,25 @@
 <?php
-
-include "./../../protegesessao.php";
-include "../../models/Servicos.php";
-
-
 include "../../models/Conexao.php";
+
+include "../../models/User.php";
+
+include "../../models/Servicos.php";
 include "../../models/Escalas.php";
 
 
 include "./Controllers/ModerarEscala.controller.php";
 
 
+include "./../login.php";
+
+
+
+
 
 include "./../../style/header.html";
+
+$usuarioLogado->nivelAcesso(2);
+
 ?>
 
 

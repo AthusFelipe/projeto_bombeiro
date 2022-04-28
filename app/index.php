@@ -1,31 +1,40 @@
 <?php
 include_once "./../models/Conexao.php";
+include_once "./../models/User.php";
+
+$conn = Conexao::conectar();
 
 
-//session_start inicia a sessão
 session_start();
-// as variáveis login e senha recebem os dados digitados na página anterior
-$login = $_POST['nomeusuario'];
-$senha = $_POST['senhausuario'];
-//as próximas 3 linhas são responsáveis em se conectar com o bando de dados.
-$pdo = Conexao::conectar();
 
-$user = $pdo->prepare('SELECT * FROM usuarios WHERE nomeusuario = ? AND senhausuario = ?');
-$user->execute([$login, $senha]);
-$usuario = $user->fetch(PDO::FETCH_OBJ);
+if(isset($_POST['nomeusuario']) && isset($_POST['senhausuario'])){
+$username = $_POST['nomeusuario'];
+$password = $_POST['senhausuario'];
+$user = new Usuario;
+$user->logar($username, $password);
 
+$_SESSION['codfunc'] = $user->getCodfunc();
+$_SESSION['nomeguerra'] = $user->getNomeguerra();
+$_SESSION['cargo'] = $user->getCargo() ; 
+$_SESSION['nivelacesso'] = $user->getNivelAcesso() ; 
 
-if (!$usuario) {
-  echo "Você não está conectado";
-  die();
-} else {
-  $_SESSION['codfunc'] = $usuario->codfunc;
+header('location: http://127.0.0.1/bombeiros/app/estoque/index.php') ;
+
+}
+
+elseif(!$_SESSION['codfunc']){
+    echo "Você não está conectado" ;
+    header('location: http://127.0.0.1/bombeiros/');
+    die();
+
+}
+else {
+
+    header('location: http://127.0.0.1/bombeiros/app/estoque/index.php') ;
+
 }
 
 
-
-
-include "./servico/layout/header.html"; 
 ?>
 
 

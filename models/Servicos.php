@@ -1,39 +1,42 @@
 <?php
 
 
-class Servico {
+class Servico
+{
 
     private $idservico;
-    private $dataservico ; 
-    private $descricaoservico ; 
-    private $horaservico ; 
+    private $dataservico;
+    private $descricaoservico;
+    private $horaservico;
 
-    public function criarServico($desc, $data, $hora){
+    public function criarServico($desc, $data, $hora)
+    {
         $this->dataservico = $data;
-        $this->descricaoservico = $desc ; 
-        $this->horaservico = $hora; 
+        $this->descricaoservico = $desc;
+        $this->horaservico = $hora;
     }
 
-    public function pesquisaServico($idservico){
+    public function pesquisaServico($idservico)
+    {
         global $conn;
-       $s1 =  $conn->query("SELECT * FROM servicos WHERE idservicos = '$idservico'")
-             ->fetch(PDO::FETCH_OBJ) ; 
-           
-             
-        $this->idservico = $s1->idservicos ;
-        $this->dataservico = $s1->dataservicos ;
-        $this->descricaoservico = $s1->descricaoservicos ; 
-        $this->horaservico = $s1->horaservicos ;
-
-             
-        
+        $s1 =  $conn->query("SELECT * FROM servicos WHERE idservicos = '$idservico'")
+            ->fetch(PDO::FETCH_OBJ);
 
 
+        $this->idservico = $s1->idservicos;
+        $this->dataservico = $s1->dataservicos;
+        $this->descricaoservico = $s1->descricaoservicos;
+        $this->horaservico = $s1->horaservicos;
     }
 
+
+    static function excluirServico($id){
+        global $conn;
+        $conn->prepare('DELETE FROM servicos WHERE idservicos = ?')->execute([$id]);
+    }
     /**
      * Get the value of descricaoservico
-     */ 
+     */
     public function getDescricaoservico()
     {
         return $this->descricaoservico;
@@ -41,7 +44,7 @@ class Servico {
 
     /**
      * Get the value of dataservico
-     */ 
+     */
     public function getDataservico()
     {
         return $this->dataservico;
@@ -49,7 +52,7 @@ class Servico {
 
     /**
      * Get the value of idservico
-     */ 
+     */
     public function getIdservico()
     {
         return $this->idservico;
@@ -57,14 +60,9 @@ class Servico {
 
     /**
      * Get the value of horaservico
-     */ 
+     */
     public function getHoraservico()
     {
         return $this->horaservico;
     }
 }
-
-
-
-
-

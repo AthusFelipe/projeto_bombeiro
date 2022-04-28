@@ -1,10 +1,17 @@
 <?php
 
-include "./../../protegesessao.php";
-
 include "./Controllers/CadastrarServico.controller.php";
 
+include "./../login.php";
+
+
+
+
+
 include "./../../style/header.html";
+
+$usuarioLogado->nivelAcesso(2);
+
 setlocale(LC_TIME, 'portuguese');
 
 

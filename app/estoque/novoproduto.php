@@ -1,8 +1,15 @@
 <?php
-include "./../../protegesessao.php";
 
 include "Controllers/NovoProdutoController.php";
+
+include "./../login.php";
+
+
+
+
+
 include "./../../style/header.html";
+$usuarioLogado->nivelAcesso(2);
 ?>
 <!DOCTYPE html>
 <link href="./../../style/bootstrap2.css" rel="stylesheet">
@@ -14,9 +21,7 @@ include "./../../style/header.html";
 
 <body>
     <div class='container'>
-        <div class='botao-voltar'>
-            <a href='./index.php'>VOLTAR</a>
-        </div>
+        
         <div class='formulario'>
             <h3 class=' '>Adicionar novo produto</h3>
 

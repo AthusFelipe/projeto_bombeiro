@@ -1,7 +1,8 @@
 <?php
-include "./../../protegesessao.php";
-
 include "Controllers/controller.php";
+
+include "./../login.php";
+
 include "./../../style/header.html";
 
 
@@ -18,7 +19,6 @@ include "./../../style/header.html";
 
 
 <div class='botao-voltar2'>
-  <a class='botao-voltar ' href='./index.php'>VOLTAR</a>
 </div>
 <div class='container'>
 

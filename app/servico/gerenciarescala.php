@@ -1,5 +1,9 @@
 <?php
-include "./../../protegesessao.php";
+include "./../../style/header.html";
+include "./Controllers/controller.php";
+include "./../login.php";
+$usuarioLogado->nivelAcesso(2);
+
 
 include "./Controllers/Voluntario.controller.php";
 include "./Controllers/GerenciarEscala.controller.php";
@@ -8,7 +12,12 @@ include "./Controllers/GerenciarEscala.controller.php";
 
 
 
-include "./../../style/header.html";
+
+
+
+
+
+
 
 
 

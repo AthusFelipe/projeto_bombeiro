@@ -1,8 +1,11 @@
 <?php
-include "./../../protegesessao.php";
 
-include "./../../style/header.html";
 include "Controllers/produtoController.php";
+
+
+include "./../login.php";
+include "./../../style/header.html";
+
 
 
 

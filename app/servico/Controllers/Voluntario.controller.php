@@ -1,6 +1,5 @@
 <?php
 
-include "controller.php";
 
 $conn = Conexao::conectar();
 
