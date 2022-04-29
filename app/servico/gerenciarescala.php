@@ -6,26 +6,14 @@ $usuarioLogado->nivelAcesso(2);
 
 include "./Controllers/Voluntario.controller.php";
 include "./Controllers/GerenciarEscala.controller.php";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
 
 
 <!DOCTYPE html>
 
+
 <body>
+    <h3 style='text-align:center'>GERENCIAR ESCALAS</h3>
 
 
     <section class='w3-row-padding w3-container' style='margin-top:50px;display:flex;flex-wrap:wrap;justify-content:center;'>

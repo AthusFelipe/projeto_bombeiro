@@ -1,4 +1,5 @@
 <?php
+
 include "./Controllers/controller.php";
 
 
@@ -88,7 +89,6 @@ $conn = Conexao::conectar();
 
 
 include "./../../style/header.html";
-// 
 ?>
 
 
@@ -162,7 +162,6 @@ include "./../../style/header.html";
 
 
         <tbody>
-
 
           <?= $voluntario ?>
           <div class='alinhardireita container'>

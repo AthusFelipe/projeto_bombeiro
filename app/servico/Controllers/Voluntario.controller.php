@@ -24,7 +24,7 @@ if (isset($_POST['idservicoescolhido'])) {
   foreach ($resultadoarray as $key => $value) {
     $conn->prepare('DELETE FROM servicosvoluntario WHERE idservicos = ? AND idmilitar = ?')->execute([$value, $_SESSION['codfunc']]);
   }
-  header('Location: ./index.php');
+  header('Location: ./voluntario.php');
 }
 
 //PRIMEIRO VALIDA SE OS GETS JÁ CONSTAM EM BD, SE NÃO CONSTAR ELE ADICIONA OS NOVOS CHECKS AO BD
@@ -42,7 +42,7 @@ if (isset($_POST['idservicoescolhido'])) {
     } else {
     }
   }
-  header('Location: ./index.php');
+  header('Location: ./voluntario.php');
 }
 
 
@@ -56,11 +56,11 @@ $voluntario = '';
 foreach ($lss as $serv) {
 
   $res = in_array($serv->idservicos, $result) ? "checked" : "unchecked";
-  $voluntario .= "    <tr><td>$serv->horaservicos</td>
+  $voluntario .= "    <tr><td style='border-bottom: 1px;border-style:solid;border-color:#cfcfcf'>$serv->horaservicos</td>
                    
-              <td>" . date("D d/m", strtotime($serv->dataservicos)) . "</td>   
+              <td style='border-bottom: 1px;border-style:solid;border-color:#cfcfcf'>" . date("D d/m", strtotime($serv->dataservicos)) . "</td>   
               
-              <td>$serv->descricaoservicos</td>
-              <td><input name='idservicoescolhido[]' type='checkbox' value='$serv->idservicos' $res ></input></td>
+              <td style='border-bottom: 1px;border-style:solid;border-color:#cfcfcf'>$serv->descricaoservicos</td>
+              <td style='border-bottom: 1px;border-style:solid;border-color:#cfcfcf'><input name='idservicoescolhido[]' type='checkbox' value='$serv->idservicos' $res ></input></td>
                   </tr>";
 }
