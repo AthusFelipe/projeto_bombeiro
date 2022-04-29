@@ -32,11 +32,11 @@ include "./../../style/header.html";
     </tr>
     <?php $listaretiradas = "";
     foreach ($retiradas as $retirada) {
-      $listaretiradas .= "
+      $listaretiradas .= strtoupper("
      <tr>
      <th> $retirada->nomeprodutos </th>
      <th>$retirada->quantidaderetirada </th>
-     ";
+     ");
     }
     echo $listaretiradas;
     ?>
