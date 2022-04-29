@@ -28,7 +28,7 @@ include "./Controllers/GerenciarEscala.controller.php";
 <body>
 
 
-    <section class='w3-row-padding w3-container' style='margin-top:50px;display:flex;justify-content:center;'>
+    <section class='w3-row-padding w3-container' style='margin-top:50px;display:flex;flex-wrap:wrap;justify-content:center;'>
 
         <?= $LISTATESTE ?>
 

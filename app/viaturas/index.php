@@ -3,37 +3,42 @@
 include "controller.php";
 
 
+
+
+
 function listaViaturas()
 {
-    global $conn;
-    $listaViaturas =   $conn->query('SELECT * FROM viaturascadastro, viaturasinformacao WHERE viaturascadastro.idviaturas = viaturasinformacao.idviatura')
-        ->fetchAll(PDO::FETCH_OBJ);
+  global $conn;
+  $listaViaturas =   $conn->query('SELECT * FROM viaturascadastro, viaturasinformacao WHERE viaturascadastro.idviaturas = viaturasinformacao.idviatura')
+    ->fetchAll(PDO::FETCH_OBJ);
 
 
-    $listarVtrs = '';
-    foreach ($listaViaturas as $viatura) {
-        $listarVtrs .=
-            "<section class='cartao'> 
-        <div class='card' style='width: 20rem;'>
-        <img src='$viatura->fotoviatura' class='card-img-top' >
-        <div class='card-body'>
-          <h5 class='card-title'>$viatura->nomeviatura</h5>
-          <p class='card-text'>$viatura->modelo $viatura->fabricante $viatura->categoria </p>
-          <a href='viatura.php?idviatura=$viatura->idviatura' class='btn btn-primary'>LINK PARA ABRIR VTR</a>
-        </div>
-      </div>
-      </div>
-      </section>
-          
+  $listarVtrs = '';
+  foreach ($listaViaturas as $viatura) {
+    $listarVtrs .=
+      "
+
+            <div class='card' style='width: 18rem;'>
+            <img class='' style='width:auto; height:auto;' src='$viatura->fotoviatura' >
+
+            <div class='card-body'>
+  <h1 class='card-title'>$viatura->nomeviatura</h1>
+        
+        
+          <p >$viatura->modelo $viatura->fabricante $viatura->categoria </p>
+         <p> <a href='viatura.php?idviatura=$viatura->idviatura' class='btn btn-primary'> CONSULTAR</a></p>
+       </div>
+          </div>
            ";
-    }
+  }
 
-    echo $listarVtrs;
+  echo $listarVtrs;
 }
 
 
 
-include "layout/header.html";
+include "./../../style/header.html";
+
 ?>
 
 
@@ -46,59 +51,65 @@ include "layout/header.html";
     align-self: center;
 
 
-   
+
     width: 100%;
-    justify-content: center;;
+    justify-content: center;
+    ;
 
   }
- .menusuperir{
-   text-align: center;
-   justify-content: center;
+
+  .menusuperir {
+    text-align: center;
+    justify-content: center;
     color: black;
- }
- .viaturas{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0;
+  }
+
+  .viaturas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
 
 
 
-  border-color:black;
-    border-style:solid;
+    border-color: black;
+    border-style: solid;
     border-width: 10px;
-    padding: 0 ; 
-    margin: 0 ;
+    padding: 0;
+    margin: 0;
 
- }
+  }
 
 
- .cartao{
-flex-grow: 1 ;
-  display: flex;
-  border-color:red;
-    border-style:solid;
+  .cartao {
+    flex-grow: 1;
+    display: flex;
+    border-color: red;
+    border-style: solid;
     border-width: 10px;
     margin: 0;
     flex-direction: row;
- }
+  }
 </style>
 
 <body>
-<ul>
-<div class='meiota'>
-    <li><a class='menusuperir' href='novoabastecimento.php'>Novo Abastecimento</a></li>
-    <li><a  class='menusuperir' href='cadastrarviatura.php'>Cadastrar viatura </a></li>
-    <li><a class='menusuperir' href='deslocamento.php'>Deslocamentos </a></li>
-    </div>
+  <ul style='display:inline;'>
+    <li><a href='novoabastecimento.php'>Novo Abastecimento</a></li>
+    <li><a href='cadastrarviatura.php'>Cadastrar viatura </a></li>
+    <li><a href='deslocamento.php'>Deslocamentos </a></li>
+
   </ul>
+
+
+  <div style='display: flex;flex-wrap:wrap;justify-content:center;gap:20px;'>
+    <?= listaViaturas(); ?>
   </div>
-<div class='cartao'>
-<pre><?= listaViaturas(); ?> </pre>
-</div>
+
+
 
 
 
 </body>
+
 </html>
