@@ -14,18 +14,22 @@ function listaViaturas()
 
 
   $listarVtrs = '';
-  foreach ($listaViaturas as $viatura) {
+  foreach ($listaViaturas as $vtr) {
+    $idVtr = $vtr->idviatura;
+    $viatura = new Viatura;
+    $viatura->retornaViatura($idVtr) ; 
     $listarVtrs .=
       "
 
             <div class='card' style='width: 18rem;'>
-            <img class='' style='width:auto; height:auto;' src='$viatura->fotoviatura' >
+            <img class='' style='width:auto; height:auto;' src='".$viatura->getFotoviatura()."' >
 
             <div class='card-body'>
-  <h1 class='card-title'>$viatura->nomeviatura</h1>
+  <h1 class='card-title'>".$viatura->getNomeviatura()."</h1>
         
         
-          <p >$viatura->modelo $viatura->fabricante $viatura->categoria </p>
+          <p >".$viatura->getModelo()." " . $viatura->getFabricante()." " . $viatura->getCategoria()." </p>
+          <p>".$viatura->status() ."</p>
          <p> <a href='viatura.php?idviatura=$viatura->idviatura' class='btn btn-primary'> CONSULTAR</a></p>
        </div>
           </div>
@@ -36,8 +40,8 @@ function listaViaturas()
 }
 
 
-
 include "./../../style/header.html";
+
 
 ?>
 
@@ -90,6 +94,10 @@ include "./../../style/header.html";
     border-width: 10px;
     margin: 0;
     flex-direction: row;
+  }
+
+  .card:hover{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 </style>
 

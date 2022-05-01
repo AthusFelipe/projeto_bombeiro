@@ -8,6 +8,8 @@ include "./../login.php";
 include "./../../style/header.html";
 
 
+
+$estoque = Conexao::BuscarDB("SELECT * FROM produtos");
 $listaProdutos = "";
 
 foreach ($estoque as $produto) {

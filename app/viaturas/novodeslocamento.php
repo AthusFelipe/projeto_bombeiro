@@ -25,11 +25,11 @@ foreach ($querySelectMotoras as $motora) {
 
 if (isset($_POST['idviatura'])) {
     $deslocamento = new Deslocamento;
-    $deslocamento->novoDeslocamento($_POST['idviatura'], $_POST['kminicial'], $_POST['motorista'], $_SESSION['codfunc'], $_POST['destino']);
+    $deslocamento->novoDeslocamento($_POST['idviatura'], $_POST['kminicial'], $_POST['motorista'], $usuarioLogado->getCodfunc(), $_POST['destino']);
     header('location: deslocamento.php');
 }
 
-include "layout/header.html";
+include "./../../style/header.html";
 
 ?>
 
@@ -60,10 +60,10 @@ include "layout/header.html";
     <div class='formulario'>
 
         <form method='post'>
-            <input list='idviatura'>
-            <datalist id='idviatura'>
+            <select name='idviatura'>
+            <option value='0' disabled selected>SELECIONE UMA VIATURA</option>
                 <?= $selectViaturas ?>
-            </datalist><br><br>
+</select><br><br>
             Km inicial:<input type='number' name='kminicial'><br><br>
             Destino: <input type='text' name='destino'><br><br>
             <select name='motorista'>

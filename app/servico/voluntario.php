@@ -162,7 +162,7 @@ include "./../../style/header.html";
 
 
         <tbody>
-
+        <input type='checkbox' name='idservicoescolhido[]' value='0' hidden checked> 
           <?= $voluntario ?>
           <div class='alinhardireita container'>
 

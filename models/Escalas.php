@@ -1,7 +1,6 @@
 <?php
 
 
-
 class Escala extends Servico
 {
 

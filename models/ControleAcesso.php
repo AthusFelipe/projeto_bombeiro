@@ -1,6 +1,6 @@
 <?php
 
-
+namespace ControleAcesso;
 
 class Acesso {
     public int $autenticado;

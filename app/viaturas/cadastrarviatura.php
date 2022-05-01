@@ -5,7 +5,9 @@ include "./Controllers/CadastrarViatura.controller.php";
 
 
 include "./../../style/header.html";
+include_once "./../login.php";
 
+$usuarioLogado->nivelAcesso(2);
 ?>
 
 
@@ -33,14 +35,14 @@ include "./../../style/header.html";
                 <div class='item-formulario'>
 
                     <label for='fotoviatura'> Foto da viatura:</label>
-                    <input type='file' accept='imagensviatura/*' name='fotoviatura'>
+                    <input type='file' accept='imagensviatura/*' name='fotoviatura' required>
 
                 </div>
 
                 <div class='item-formulario'>
 
                     <label for='modeloviatura'>Modelo: </label>
-                    <input type='text' name='modeloviatura'>
+                    <input type='text' name='modeloviatura' required>
 
 
                 </div>
@@ -48,7 +50,7 @@ include "./../../style/header.html";
                 <div class='item-formulario'>
 
                     <label for='placaviatura'>Placa: </label>
-                    <input type='text' name='placaviatura'>
+                    <input type='text' name='placaviatura' required>
 
                 </div>
 
@@ -56,29 +58,29 @@ include "./../../style/header.html";
                 <div class='item-formulario'>
 
                     <label for='marcaviatura'>Fabricante: </label>
-                    <input type='text' name='marcaviatura'>
+                    <input type='text' name='marcaviatura' required>
 
                 </div>
 
                 <div class='item-formulario'>
 
                     <label for='combustivel'>Combustivel</label>
-                    <input type='text' name='combustivel'>
+                    <input type='text' name='combustivel' required>
                 </div>
 
                 <div class='item-formulario'>
 
                     <label for='chassi'> Chassi:</label>
-                    <input type='text' name='chassiviatura'>
+                    <input type='text' name='chassiviatura' required>
                 </div>
 
                 <div class='item-formulario'>
 
                     <label for='categoriaviatura'> Categoria</label>
-                    <input type='text' name='categoriaviatura'>
+                    <input type='text' name='categoriaviatura' required>
                     <div class='item-formulario'>
                         <div class='div-botao-criar'>
-                            <input class='   botao-criar' class='botao-criar' type='submit' value='CADASTRAR'><br>
+                            <input class='   botao-criar' class='botao-criar' type='submit' value='CADASTRAR' required><br>
                         </div>
                     </div>
 

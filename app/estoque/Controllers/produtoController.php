@@ -1,7 +1,5 @@
 <?php
-include "controller.php";
-
-
+$conn = Conexao::conectar() ; 
 
 
 
@@ -16,5 +14,5 @@ if (isset($_GET['adicionar'])) {
 }
 
 if (isset($_GET['remover'])) {
-    Produto::retirarEstoque($_GET['idproduto'], $_GET['quantidade']);
+    Produto::retirarEstoque($_GET['idproduto'], $_GET['quantidade'], $usuarioLogado->getCodfunc());
 }

@@ -1,6 +1,9 @@
 <?php
 
 include "controller.php";
+
+
+
 //deslocamentos abertos
 $buscaDesloc = $conn->query('SELECT * FROM viaturasdeslocamento WHERE kmfinal  = 0 ORDER BY horainicial DESC')->fetchAll(PDO::FETCH_OBJ);
 
@@ -35,7 +38,7 @@ $datatratada = date('d/m H:i', strtotime($desloc->horainicial));
 
 
 
-include "layout/header.html";
+include "./../../style/header.html";
 ?>
 
 
@@ -110,8 +113,6 @@ width: fit-content;
     }
     
     </style>
-    <div class='botao'>
-        <a href='./index.php'><button class='btn btn-danger'>VOLTAR </button></a><br></div>
 
 <div class='menutopo'>
 

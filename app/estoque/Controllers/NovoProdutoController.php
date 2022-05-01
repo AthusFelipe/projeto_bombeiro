@@ -1,6 +1,7 @@
 <?php
 
 include "controller.php";
+$conn = Conexao::conectar() ; 
 
 
 if (isset($_POST['quantidadeproduto'])) {

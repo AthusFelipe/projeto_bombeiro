@@ -29,13 +29,18 @@ include "./../../style/header.html";
     <tr class='tabela-cabecalho'>
       <th>Produto</th>
       <th>Total retirado</th>
+      <th>Militar</th>
+      <th>Data</th>
     </tr>
     <?php $listaretiradas = "";
     foreach ($retiradas as $retirada) {
       $listaretiradas .= strtoupper("
      <tr>
+     
      <th> $retirada->nomeprodutos </th>
      <th>$retirada->quantidaderetirada </th>
+     <th>$retirada->cargo $retirada->nomeguerra </th>
+     <th>$retirada->dataretirada </th>
      ");
     }
     echo $listaretiradas;

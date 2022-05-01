@@ -1,9 +1,9 @@
 <?php
-
-include "Controllers/produtoController.php";
-
+include "./Controllers/controller.php";
 
 include "./../login.php";
+include "Controllers/produtoController.php";
+
 include "./../../style/header.html";
 
 

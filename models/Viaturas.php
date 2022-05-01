@@ -126,6 +126,15 @@ class Viatura
         return $this;
     }
 
+
+    public function status(){
+        switch ($this->getStatus()){
+            case 1 : $statusVtr = "ATIVO"; break;
+            case 0 : $statusVtr = "INATIVO" ; break;
+        }
+        return $statusVtr ; 
+    }
+
     /**
      * Get the value of modelo
      */

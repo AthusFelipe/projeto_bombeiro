@@ -30,7 +30,8 @@ if (isset($_POST['nomeviatura'])) {
         ->execute([$v1->getIdviatura(), $v1->getModelo(), $v1->getPlaca(), $v1->getFabricante(), $v1->getCombustivel(), $v1->getChassi(), $v1->getCategoria()]);
 
 
-    echo '<pre>';
-    print_r($v1);
-    echo '</pre>';
+    if($v1){
+        header('location: ./index.php');
+    }
 }
+

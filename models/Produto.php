@@ -25,12 +25,12 @@ class Produto
     static function excluirProduto($id)
     {
         global $conn;
-        if (isset($_GET['excluir'])) {
-            $conn->query("DELETE FROM produtos WHERE idprodutos = {$_GET['excluir']} ");
-            $conn->query("DELETE FROM produtosretiradas WHERE idprodutos = {$_GET['excluir']}");
-            $conn->query("DELETE FROM produtosadicionados WHERE idprodutos = {$_GET['excluir']} ");
+       
+            $conn->query("DELETE FROM produtos WHERE idprodutos = {$id} ");
+            $conn->query("DELETE FROM produtosretiradas WHERE idprodutos = {$id}");
+            $conn->query("DELETE FROM produtosadicionados WHERE idprodutos = {$id} ");
             header('location: ./index.php');
-        }
+        
     }
 
     static function adicionarEstoque($id, $qtd)
@@ -48,15 +48,15 @@ class Produto
     }
 
 
-    static function retirarEstoque($id, $qtd)
+    static function retirarEstoque($id, $qtd, $codfunc)
     {
         global $conn;
 
         $conn->prepare('UPDATE produtos SET quantidadeprodutos = (quantidadeprodutos - ?) WHERE idprodutos = ?')
             ->execute([$qtd, $id]);
 
-        $conn->prepare('INSERT INTO produtosretiradas (idprodutos, quantidaderetirada) VALUES (?, ?)')
-            ->execute([$id, $qtd]);
+        $conn->prepare('INSERT INTO produtosretiradas (idprodutos, quantidaderetirada, codfunc, dataretirada) VALUES (?, ?, ?, ?)')
+            ->execute([$id, $qtd, $codfunc, date('d-m-Y')]);
 
         header('Location: index.php');
     }

@@ -1,6 +1,16 @@
 <?php
+include "../../models/Viaturas.php";
+include "../../models/Abastecimentos.php";
+include "../../models/Deslocamentos.php";
+include "../../models/User.php";
+include "../../models/Conexao.php";
+// include "../../models/Produto.php";
+// include "../../models/User.php";
 
-include "controller.php";
+include "./../login.php";
+
+
+$conn = Conexao::conectar();
 
 $vtr = $conn->query('SELECT * FROM viaturascadastro, viaturasinformacao WHERE
 viaturascadastro.idviaturas = viaturasinformacao.idviatura 

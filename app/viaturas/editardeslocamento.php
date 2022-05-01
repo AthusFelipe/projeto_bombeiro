@@ -8,7 +8,6 @@ $iddesloc = $_GET['iddeslocamento'] ;
 $desloc = $conn->query("SELECT * FROM viaturasdeslocamento WHERE iddeslocamento  = $iddesloc ")->fetch(PDO::FETCH_OBJ);
 
 
-echo '<pre>'; print_r($desloc); echo '<pre>' ; //SNIPPET DEBUG
 
 $nomevtr = $conn->query("SELECT nomeviatura FROM viaturascadastro WHERE idviaturas = $desloc->idviatura")->fetch(PDO::FETCH_OBJ);
 
@@ -24,12 +23,17 @@ header('location: ./deslocamento.php');
 
 }
 
-include "layout/header.html";
+include "./../../style/header.html";
 
 
+if ($desloc->horafinal == '00:00:00'){
+    $desloc->horafinal = date('H:i');
 
 
-echo date('d/m/Y H:i', strtotime($desloc->horafinal));
+}
+
+
+echo $desloc->horafinal;
 ?>
 
 
@@ -42,8 +46,8 @@ echo date('d/m/Y H:i', strtotime($desloc->horafinal));
     motorista <input name='motorista' type='text' value='<?=$desloc->codfuncmotorista ;?>'>
     km inicial <input name='kminicial' type='number' value='<?=$desloc->kminicial ;?>'>
     km final <input name='kmfinal' type='number' value='<?=$desloc->kmfinal?>'>
-    hora inicial <input name='horainicial' type='datetime-local' value='<?= date('d/m/Y H:i', strtotime($desloc->horainicial))?>' >
-    hora final <input  name='horafinal' type='datetime-local' value='<?=date('d/m/Y H:i', strtotime($desloc->horafinal))?>'>
+    hora inicial <input name='horainicial' type='time' value='<?= $desloc->horainicial?>' >
+    hora final <input  name='horafinal' type='time' value='<?=$desloc->horafinal?>'>
     destino <input  name='destino' type='text' value='<?= $desloc->destino ?>'>
 
     <input type='submit' value='SALVAR'>

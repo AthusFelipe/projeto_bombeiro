@@ -3,21 +3,24 @@ include "../../models/Conexao.php";
 include "../../models/Produto.php";
 include "../../models/User.php";
 
-
-
+$conn = Conexao::conectar();
 
 //LISTA TODOS OS PRODUTOS
 
 {
-    $conn = Conexao::conectar();
-    $estoque = $conn->query("SELECT * FROM produtos")->fetchAll(PDO::FETCH_OBJ);
+    $estoque = Conexao::BuscarDB("SELECT * FROM produtos");
 }
 
 
 //LISTA OS PRODUTOS RETIRADOS ORDENADO POR NOME NA PAGINA RETIRADAS.PHP
 {
-    $retiradas = $conn->query('SELECT produtosretiradas.idprodutos, produtosretiradas.quantidaderetirada,  produtos.nomeprodutos 
-                          FROM produtosretiradas, produtos 
-                          WHERE produtosretiradas.idprodutos = produtos.idprodutos 
-                          ORDER BY produtos.nomeprodutos')->fetchAll(PDO::FETCH_OBJ);
+    
+
+$retiradas = Conexao::BuscarDB('SELECT produtosretiradas.idprodutos, produtosretiradas.quantidaderetirada,produtosretiradas.dataretirada,
+produtos.nomeprodutos, usuarios.cargo, usuarios.nomeguerra
+                        FROM produtosretiradas, produtos, usuarios 
+                        WHERE produtosretiradas.idprodutos = produtos.idprodutos  AND produtosretiradas.codfunc = usuarios.codfunc
+                        ORDER BY produtos.nomeprodutos');
+
+                        
 }

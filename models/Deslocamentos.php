@@ -1,7 +1,6 @@
 <?php
 
 
-
 class Deslocamento{
     public int $iddeslocamento ; 
     public int $idviatura;
@@ -19,7 +18,7 @@ class Deslocamento{
         $this->kminicial = $kminicial ;
         $this->codfuncMotorista = $motorista;
         $this->criadopor = $criador ; 
-        $this->horainicial = date('Y-m-d H-i-s'); 
+        $this->horainicial = date('H:i'); 
         $this->destino = $destino ; 
         
 
@@ -61,6 +60,10 @@ class Deslocamento{
        $conn->query("UPDATE viaturasdeslocamento SET
         kmfinal = '$this->kmfinal', horafinal = '$this->horafinal'  WHERE iddeslocamento = $this->iddeslocamento");
    }
+
+
+
+
     public function getIddeslocamento()
     {
         return $this->iddeslocamento;

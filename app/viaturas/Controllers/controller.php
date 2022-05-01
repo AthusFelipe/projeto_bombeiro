@@ -10,6 +10,7 @@ include "../../models/Conexao.php";
 // include "../../models/Produto.php";
 // include "../../models/User.php";
 
+include_once "./../login.php";
 
 
 $conn = Conexao::conectar();

@@ -85,7 +85,16 @@ $usuarioLogado->nivelAcesso(2);
 
 
 
+
         </table>
+        ADICIONAR MANUALMENTE:
+        <form method='post'>
+        <select name='idmilitar'>
+
+        <?= $listMilitarSelect ; ?>
+        </select>
+        <input type='submit' value='inserir'>
+</form>
       </div>
       <div class='col col-sm-4'>
         <table>

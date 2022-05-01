@@ -71,3 +71,16 @@ foreach ($listaEscalados as $escalado) {
         $escalados = '<tr><td>Não há militar escalado</td></tr>';
     }
 }
+
+
+
+//SELECT ADICIONAR MANUALMENTE
+
+$addManual = $conn->query("SELECT * FROM usuarios")->fetchAll(PDO::FETCH_OBJ);
+
+
+$listMilitarSelect = '';
+foreach ($addManual as $militarSelect)
+
+$listMilitarSelect .= "
+                        <option value='".$militarSelect->codfunc."'>".$militarSelect->cargo." ".$militarSelect->nomeguerra."</option>" ; 

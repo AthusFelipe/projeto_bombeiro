@@ -13,6 +13,15 @@ include "./Controllers/GerenciarEscala.controller.php";
 
 
 <body>
+    <div class='container' style='display:inline;'>
+<a href="http://127.0.0.1/bombeiros/app/servico/cadastrarservico.php" class="w3-bar-item w3-button">Criar escala</a>
+<a href="relatoriomensal.php" class="w3-bar-item w3-button">Relatório</a>
+
+    </div>
+
+
+
+
     <h3 style='text-align:center'>GERENCIAR ESCALAS</h3>
 
 

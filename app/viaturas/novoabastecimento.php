@@ -2,7 +2,6 @@
 
 include "Controllers/Abastecimento.controller.php";
 
-include "./../login.php";
 include "./../../style/header.html";
 
 $usuarioLogado->nivelAcesso(2);
