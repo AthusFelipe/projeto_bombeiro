@@ -17,19 +17,19 @@ function listaViaturas()
   foreach ($listaViaturas as $vtr) {
     $idVtr = $vtr->idviatura;
     $viatura = new Viatura;
-    $viatura->retornaViatura($idVtr) ; 
+    $viatura->retornaViatura($idVtr);
     $listarVtrs .=
       "
 
             <div class='card' style='width: 18rem;'>
-            <img class='' style='width:auto; height:auto;' src='".$viatura->getFotoviatura()."' >
+            <img class='' style='width:auto; height:auto;' src='" . $viatura->getFotoviatura() . "' >
 
             <div class='card-body'>
-  <h1 class='card-title'>".$viatura->getNomeviatura()."</h1>
+  <h1 class='card-title'>" . $viatura->getNomeviatura() . "</h1>
         
         
-          <p >".$viatura->getModelo()." " . $viatura->getFabricante()." " . $viatura->getCategoria()." </p>
-          <p>".$viatura->status() ."</p>
+          <p >" . $viatura->getModelo() . " " . $viatura->getFabricante() . " " . $viatura->getCategoria() . " </p>
+          <p>" . $viatura->status() . "</p>
          <p> <a href='viatura.php?idviatura=$viatura->idviatura' class='btn btn-primary'> CONSULTAR</a></p>
        </div>
           </div>
@@ -96,12 +96,29 @@ include "./../../style/header.html";
     flex-direction: row;
   }
 
-  .card:hover{
+  .card:hover {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 </style>
 
 <body>
+
+
+
+  <div style='text-align:center;display:flex;justify-content:center;'>
+
+    <a style='font-weight:bold;
+    color:white;
+    border-style:solid;
+    border-width:0px;
+    border-radius:2px;
+    background-color:#bf0000;' href="http://127.0.0.1/bombeiros/app/viaturas/cadastrarviatura.php" class="w3-bar-item w3-button">Cadastrar viatura</a>
+
+
+  </div>
+
+
+
   <ul style='display:inline;'>
     <li><a href='novoabastecimento.php'>Novo Abastecimento</a></li>
     <li><a href='cadastrarviatura.php'>Cadastrar viatura </a></li>

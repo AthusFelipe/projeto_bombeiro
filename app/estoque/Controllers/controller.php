@@ -14,13 +14,11 @@ $conn = Conexao::conectar();
 
 //LISTA OS PRODUTOS RETIRADOS ORDENADO POR NOME NA PAGINA RETIRADAS.PHP
 {
-    
 
-$retiradas = Conexao::BuscarDB('SELECT produtosretiradas.idprodutos, produtosretiradas.quantidaderetirada,produtosretiradas.dataretirada,
+
+    $retiradas = Conexao::BuscarDB('SELECT produtosretiradas.idprodutos, produtosretiradas.quantidaderetirada,produtosretiradas.dataretirada,
 produtos.nomeprodutos, usuarios.cargo, usuarios.nomeguerra
                         FROM produtosretiradas, produtos, usuarios 
                         WHERE produtosretiradas.idprodutos = produtos.idprodutos  AND produtosretiradas.codfunc = usuarios.codfunc
-                        ORDER BY produtos.nomeprodutos');
-
-                        
+                        ORDER BY produtosretiradas.dataretirada DESC');
 }

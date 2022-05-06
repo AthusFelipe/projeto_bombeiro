@@ -3,7 +3,7 @@
 
 $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 $total = (count($lss));
-$registros = 10;
+$registros = 12;
 $numPaginas = ceil($total / $registros);
 $inicio = ($registros * $pagina) - $registros;
 $diaAtual = date('Y-m-d');
@@ -65,7 +65,7 @@ foreach ($lss as $serv) {
 
 
     "  
-  <div class=' w3-quarter w3-center w3-container'  style='box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border-color:black;border-width:0px;border-style:solid;margin:12px;border-radius:15px;'>
+  <div class=' w3-quarter w3-center w3-container'  style='box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border-color:black;border-width:0px;border-style:solid;margin:12px;border-radius:15px;margin-top:0px;'>
   
     <h3 style='text-decoration:none;' >
       <a class='cartao-servico'  style='textdecoration:none; 'href='./moderarescala.php?idservico=$serv->idservicos'></h3>   

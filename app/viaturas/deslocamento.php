@@ -8,12 +8,12 @@ include "controller.php";
 $buscaDesloc = $conn->query('SELECT * FROM viaturasdeslocamento WHERE kmfinal  = 0 ORDER BY horainicial DESC')->fetchAll(PDO::FETCH_OBJ);
 
 
-$listaDesloc = ''; 
-foreach ($buscaDesloc as $desloc){
-$nomevtr = $conn->query("SELECT nomeviatura FROM viaturascadastro WHERE idviaturas = $desloc->idviatura")->fetch(PDO::FETCH_OBJ);
-$militarmotorista = $conn->query("SELECT cargo, nomeguerra FROM usuarios WHERE codfunc = $desloc->codfuncmotorista")->fetch(PDO::FETCH_OBJ);
-$militarcriador = $conn->query("SELECT cargo, nomeguerra FROM usuarios WHERE codfunc = $desloc->codfunccriador")->fetch(PDO::FETCH_OBJ);
-$datatratada = date('d/m H:i', strtotime($desloc->horainicial));
+$listaDesloc = '';
+foreach ($buscaDesloc as $desloc) {
+    $nomevtr = $conn->query("SELECT nomeviatura FROM viaturascadastro WHERE idviaturas = $desloc->idviatura")->fetch(PDO::FETCH_OBJ);
+    $militarmotorista = $conn->query("SELECT cargo, nomeguerra FROM usuarios WHERE codfunc = $desloc->codfuncmotorista")->fetch(PDO::FETCH_OBJ);
+    $militarcriador = $conn->query("SELECT cargo, nomeguerra FROM usuarios WHERE codfunc = $desloc->codfunccriador")->fetch(PDO::FETCH_OBJ);
+    $datatratada = date('d/m H:i', strtotime($desloc->horainicial));
 
 
 
@@ -28,9 +28,6 @@ $datatratada = date('d/m H:i', strtotime($desloc->horainicial));
                       <th><a href='editardeslocamento.php?iddeslocamento=$desloc->iddeslocamento'>Finalizar</a></th>
                       </tr>
                         ";
-
-
-
 }
 
 
@@ -45,34 +42,36 @@ include "./../../style/header.html";
 
 <!DOCTYPE html>
 <style>
-    .deslocamentosabertos{
-        display:grid;
-width: fit-content;  
+    .deslocamentosabertos {
+        display: grid;
+        width: fit-content;
 
 
 
 
-}
-    .menu-superior{
+    }
+
+    .menu-superior {
         display: inline-flex;
         width: fit-content;
         list-style-type: none;
-        
+
     }
-    ul{
+
+    ul {
         text-align: center;
         padding: 0;
     }
-   
-    li{
+
+    li {
         margin: 0 30px;
         text-align: center;
         align-items: center;
         padding: 0;
         width: fit-content;
     }
-    
-    .menusuperior{
+
+    .menusuperior {
         text-align: center;
         padding: 0;
         margin: 0;
@@ -100,52 +99,52 @@ width: fit-content;
         font-weight: bold;
     }
 
-    .deslocaberto{
+    .deslocaberto {
         text-align: center;
         background-color: #bf0000;
-        margin: 3% 0 0 0 ;
+        margin: 3% 0 0 0;
         color: white;
-        text-shadow: #bf0000 ;
+        text-shadow: #bf0000;
         font-weight: bold;
     }
-    .botao{
+
+    .botao {
         margin: 1%;
     }
-    
-    </style>
+</style>
 
 <div class='menutopo'>
 
-<p class='menusuperior'>Deslocamentos</p>
+    <p class='menusuperior'>Deslocamentos</p>
     <ul>
-    <div class='menu-superior'>
+        <div class='menu-superior'>
 
-        <li><a href='novodeslocamento.php'>Novo deslocamento</a></li>
-        <li>Consultar deslocamentos</li>
+            <li><a href='novodeslocamento.php'>Novo deslocamento</a></li>
+            <li>Consultar deslocamentos</li>
 
     </ul>
-    </div>
+</div>
 </div>
 <div class='deslocamentoabertos '>
-<p class='deslocaberto'>DESLOCAMENTOS EM ABERTO</p>
+    <p class='deslocaberto'>DESLOCAMENTOS EM ABERTO</p>
 
-<table class='table'>
-    <tr>
-        <th>VTR</th>
-        <th>MOTORISTA</th>
-        <th>KM</th>
-        <th>HORÁRIO</th>
-        <th>DESTINO</th>
-    </tr>
-    <tbody>
+    <table class='table'>
+        <tr>
+            <th>VTR</th>
+            <th>MOTORISTA</th>
+            <th>KM</th>
+            <th>HORÁRIO</th>
+            <th>DESTINO</th>
+        </tr>
+        <tbody>
 
-<?= $listaDesloc ;?>
-    </tbody>
-</table>
+            <?= $listaDesloc; ?>
+        </tbody>
+    </table>
 
 
 
-</form>
+    </form>
 
 </div>
 
